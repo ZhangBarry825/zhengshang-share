@@ -1,4 +1,4 @@
-const siteTitle='website title'
+const siteTitle='河南正尚网络科技'
 
 module.exports = {
     chainWebpack: config => {

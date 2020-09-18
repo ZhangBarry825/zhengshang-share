@@ -12,6 +12,9 @@ Vue.use(ElementUI);
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
+import './assets/font/font.scss'
+
+
 Vue.use(Vant);
 
 new Vue({
