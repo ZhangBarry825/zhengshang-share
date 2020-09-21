@@ -1,8 +1,8 @@
 <template>
-    <div class="header-page">
+    <div class="header-page" id="fixed" :class="{'isFixed':isFixed}">
         <div class="center">
             <div class="logo">
-                <img src="../assets/images/logo-pc.png" alt="">
+                <img :src="isFixed?logo1:logo" >
             </div>
             <div class="menus">
                 <div class="menu" v-for="(item,index) in menuList">{{item.title}}</div>
@@ -16,16 +16,51 @@
 
     export default {
         name: "Header",
+        props: {
+            needFixed: {
+                type: Boolean,
+                default: false
+            }
+        },
         data(){
             return{
-                menuList:homeData.menuList
+                menuList:homeData.menuList,
+                isFixed:false,
+                isMenuShow: false,
+                logo: require('../assets/images/logo-pc.png'),
+                logo1: require('../assets/images/logo1-pc.png'),
             }
+        },
+        methods:{
+            showMenus() {
+                this.isMenuShow = true
+            },
+            hideMenus() {
+                this.isMenuShow = false
+            },
+            handleScroll() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
+                this.isFixed = scrollTop > 0 ? true : false;  // 如果滚动到顶部了，this.isFixed就为true
+
+                window.onscroll = function () {
+                    var sl = -Math.max(document.body.scrollLeft, document.documentElement.scrollLeft);
+                    document.getElementById('fixed').style.left = sl + 'px';
+                }
+            }
+        },
+        mounted() {
+            if(this.needFixed){
+                this.isFixed=true
+            }
+            window.addEventListener('scroll', this.handleScroll)
         }
     }
 </script>
 
 <style scoped lang="scss">
+
     .header-page{
+        transition: background-color .5s;
         z-index: 9;
         box-sizing: border-box;
         position: fixed;
@@ -54,6 +89,20 @@
                    cursor: pointer;
                }
            }
+        }
+
+    }
+    .isFixed {
+        position: fixed !important;
+        background-color: #ffffff;
+        box-shadow: 0 8px 20px 0 rgba(167, 176, 208, 0.4);
+        z-index: 999 !important;
+        .center{
+            .menus{
+                .menu{
+                    color: #222222;
+                }
+            }
         }
 
     }

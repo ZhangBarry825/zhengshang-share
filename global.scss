@@ -5,3 +5,10 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@mixin line-hidden($line:1){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
