@@ -3,7 +3,7 @@ import qs from 'qs'
 import { MessageBox, Message } from 'element-ui'
 
 const service = axios.create({
-    baseURL: 'https://xxx.com', // url = base url + request url
+    baseURL: 'https://zhengshangwl.com', // url = base url + request url
     // withCredentials: true, // send cookies when cross-domain requests
     timeout: 10000 // request timeout
 })
@@ -27,7 +27,7 @@ service.interceptors.response.use(
         const res = response.data
         if (res.code !== 1) {
             Message({
-                message: res.message || 'Error',
+                message: res.msg || 'Error',
                 type: 'error',
                 duration: 5 * 1000
             })

@@ -1,28 +1,28 @@
 <template>
-    <div class="home">
+    <div class="home" id="home">
         <Header></Header>
         <div class="swipe-box">
             <el-carousel indicator-position="50px">
-                <el-carousel-item v-for="item in 4" :key="item">
-                    <div class="banner-item">
+                <el-carousel-item v-for="item in swipeList">
+                    <div class="banner-item" :style="'background-image: url('+item.img+')'">
                         <div class="banner-context">
                             <div class="line1">
-                                <div class="text text1">专业开发</div>
+                                <div class="text text1">{{item.leftText}}</div>
                                 <div class="x">
                                     <img src="../assets/images/banner-x.png" alt="">
                                 </div>
-                                <div class="text text2">高端定制</div>
+                                <div class="text text2">{{item.rightText}}</div>
                             </div>
                             <div class="line2">
-                                全行业APP/小程序定制开发
+                                {{item.description}}
                             </div>
-                            <div class="line3">立即咨询</div>
+                            <div class="line3" @click="openDialog">立即咨询</div>
                         </div>
                     </div>
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <div class="case">
+        <div class="case" id="case">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -37,6 +37,7 @@
                         <van-tab v-for="(item,index) in customerCase" :title="item.title">
                             <div class="tab-content">
                                 <div class="case-item" v-for="(item2,index2) in item.items"
+                                     @click="caseDetail(index,index2)"
                                      :style="'background-image: url('+item2.cover+')'">
                                     <div class="cover">
                                         <img src="../assets/images/search.png" alt="">
@@ -49,7 +50,7 @@
             </div>
 
         </div>
-        <div class="our-service">
+        <div class="our-service" id="our-service">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -70,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-process">
+        <div class="project-process" id="project-process">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -100,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <div class="our-advantage">
+        <div class="our-advantage" id="our-advantage">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -136,7 +137,7 @@
                 </div>
             </div>
         </div>
-        <div class="problems">
+        <div class="problems" id="problems">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -155,7 +156,7 @@
                 </div>
             </div>
         </div>
-        <div class="products">
+        <div class="products" id="products">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -175,13 +176,13 @@
                                 {{item.title}} <span>￥{{item.price}}起</span>
                             </div>
                             <div class="line2">{{item.description}}</div>
-                            <div class="line3">立即咨询</div>
+                            <div class="line3" @click="openDialog">立即咨询</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="about-us">
+        <div class="about-us" id="about-us">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -234,7 +235,7 @@
                 </div>
             </div>
         </div>
-        <div class="partners">
+        <div class="partners" id="partners">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -256,7 +257,7 @@
                 </div>
             </div>
         </div>
-        <div class="news">
+        <div class="news" id="news">
             <div class="center">
                 <div class="title">
                     <div class="title-line">
@@ -267,7 +268,7 @@
                     <div class="title-line4">{{menuDescription.news}}</div>
                 </div>
                 <div class="items">
-                    <div class="item" v-for="(item,index) in newsList">
+                    <div class="item" v-for="(item,index) in newsList" @click="newsDetail(index)">
                         <div class="top">
                             <van-image
                                     width="100%"
@@ -277,42 +278,43 @@
                             />
                         </div>
                         <div class="line1">{{item.title}}</div>
-                        <div class="line2">{{item.content}}</div>
-
+                        <div class="line2">{{item.content.description[0]}}</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="dialog-box" v-if="showDialog">
-            <div class="top">
-                <img src="../assets/images/cccc.png" alt="" class="close">
-                <img src="../assets/images/kf.png" alt="" class="kf">
-                <div class="right">
-                    <div class="line1">正尚科技</div>
-                    <div class="line2">为您提供专业解决方案</div>
-                    <div class="line3">
-                        <img src="../assets/images/kfdh.png" alt="" class="tel">
-                        <div class="text">0371-55150821</div>
+        <transition name="fade">
+            <div class="dialog-box" v-if="showDialog">
+                <div class="top">
+                    <img @click="showDialog=false" src="../assets/images/cccc.png" alt="" class="close">
+                    <img src="../assets/images/kf.png" alt="" class="kf">
+                    <div class="right">
+                        <div class="line1">{{dialogData.title}}</div>
+                        <div class="line2">{{dialogData.description}}</div>
+                        <div class="line3">
+                            <img src="../assets/images/kfdh.png" alt="" class="tel">
+                            <div class="text">{{dialogData.tel}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="line1">
+                        <el-input v-model="name" placeholder="姓名："></el-input>
+                        <el-input v-model="tel" placeholder="联系方式："></el-input>
+                    </div>
+                    <div class="line2">
+                        <el-input
+                                type="textarea"
+                                placeholder="请输入内容"
+                                v-model="message"
+                                resize="none"
+                                :rows="5"
+                        ></el-input>
+                        <el-button type="danger" @click="postForm">咨询</el-button>
                     </div>
                 </div>
             </div>
-            <div class="bottom">
-                <div class="line1">
-                    <el-input v-model="name" placeholder="姓名："></el-input>
-                    <el-input v-model="tel" placeholder="联系方式："></el-input>
-                </div>
-                <div class="line2">
-                    <el-input
-                            type="textarea"
-                            placeholder="请输入内容"
-                            v-model="message"
-                            resize="none"
-                            :rows="5"
-                    ></el-input>
-                    <el-button type="danger">咨询</el-button>
-                </div>
-            </div>
-        </div>
+        </transition>
         <Footer></Footer>
     </div>
 </template>
@@ -322,6 +324,7 @@
     import Header from "../components/Header";
     import {homeData} from "../../public/MockData";
     import Footer from "../components/Footer";
+    import {formPost} from "../utils/api";
 
     export default {
         name: 'Home',
@@ -332,6 +335,7 @@
         data() {
             return {
                 projectProcessIndex: 0,
+                swipeList: homeData.swipeList,
                 menuDescription: homeData.menuDescription,
                 customerCase: homeData.customerCase,
                 ourService: homeData.ourService,
@@ -342,16 +346,74 @@
                 aboutUs: homeData.aboutUs,
                 partners: homeData.partners,
                 newsList: homeData.newsList,
-                name:'',
-                tel:'',
-                message:'',
-                showDialog:true
+                dialogData: homeData.dialogData,
+                name: '',
+                tel: '',
+                message: '',
+                showDialog: false,
+                timer: '',
             };
         },
-        methods: {},
+        methods: {
+            newsDetail(index){
+                this.$router.push({
+                    path:'/news',
+                    query:{
+                        newsIndex:index,
+                    }
+                })
+            },
+            caseDetail(typeIndex,itemIndex){
+                this.$router.push({
+                    path:'/case',
+                    query:{
+                        typeIndex:typeIndex,
+                        itemIndex:itemIndex,
+                    }
+                })
+            },
+            openDialog() {
+                this.$dia()
+            },
+            autoAlertDialog() {
+                let that = this
+                that.timer = setInterval(() => {
+                    that.showDialog = true
+                    clearInterval(that.timer)
+                    that.autoAlertDialog()
+                }, 30000)
+            },
+            postForm(){
+                let that = this
+                formPost({
+                    name:this.name,
+                    mobile:this.tel,
+                    remark:this.message,
+                }).then((res)=>{
+                    if(res.code == 1){
+                        that.$message.success('提交成功，我们会尽快与您联系！')
+                        setTimeout(()=>{
+                            that.showDialog=false
+                        },2000)
+                    }
+                })
+
+            }
+        },
+        mounted() {
+            //自动咨询弹窗 30s
+            this.autoAlertDialog()
+        }
     }
 </script>
 <style lang="scss" scoped>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to
+    {
+        opacity: 0;
+    }
     .home {
         width: 100%;
         min-width: 1200px;
@@ -397,7 +459,6 @@
             .banner-item {
                 width: 100%;
                 height: 100%;
-
                 background-image: url("../assets/images/bg.png");
                 @include background-center;
 
@@ -442,6 +503,7 @@
                     }
 
                     .line3 {
+                        margin-top: 30px;
                         cursor: pointer;
                         width: 200px;
                         height: 60px;
@@ -1504,16 +1566,20 @@
                         align-items: center;
                         border: 1px solid grey;
                     }
-                    .item:nth-child(1){
+
+                    .item:nth-child(1) {
                         border-top-left-radius: 10px;
                     }
-                    .item:nth-child(5){
+
+                    .item:nth-child(5) {
                         border-top-right-radius: 10px;
                     }
-                    .item:nth-child(6){
+
+                    .item:nth-child(6) {
                         border-bottom-left-radius: 10px;
                     }
-                    .item:nth-child(10){
+
+                    .item:nth-child(10) {
                         border-bottom-right-radius: 10px;
                     }
                 }
@@ -1576,30 +1642,35 @@
                         bottom: 10px;
                     }
                 }
-                .items{
+
+                .items {
                     margin-top: 50px;
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
                     flex-direction: row;
-                    .item{
+
+                    .item {
                         cursor: pointer;
                         width: 373px;
                         height: 430px;
                         display: flex;
                         flex-direction: column;
-                        .top{
+
+                        .top {
                             width: 100%;
-                            height: 260px ;
+                            height: 260px;
                         }
-                        .line1{
+
+                        .line1 {
                             font-size: 24px;
                             font-weight: bold;
                             color: #222222;
                             @include line-hidden(1);
                             margin: 30px 0;
                         }
-                        .line2{
+
+                        .line2 {
                             font-size: 18px;
                             font-weight: 400;
                             color: #666666;
@@ -1607,28 +1678,33 @@
                             @include line-hidden(2);
                         }
                     }
-                    .item:nth-child(2),.item:nth-child(5){
+
+                    .item:nth-child(2), .item:nth-child(5) {
                         margin: 0 30px;
                     }
-                    .item:nth-child(1),.item:nth-child(2),.item:nth-child(3){
+
+                    .item:nth-child(1), .item:nth-child(2), .item:nth-child(3) {
                         margin-bottom: 30px;
                     }
                 }
             }
         }
 
-        .dialog-box{
+        .dialog-box {
             z-index: 9;
             position: fixed;
             top: calc(50% - 250px);
-            left:calc(50% - 340px);
+            left: calc(50% - 340px);
             width: 680px;
             height: 500px;
             display: flex;
             flex-direction: column;
-            .top{
-                border-top-left-radius: 5px ;
-                border-top-right-radius: 5px ;
+            box-shadow: 0 0 10px rgba(151,151,151,0.47);
+            border-radius: 5px;
+
+            .top {
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
                 width: 100%;
                 height: 270px;
                 background-color: #0080ff;
@@ -1639,36 +1715,43 @@
                 display: flex;
                 justify-content: flex-end;
                 position: relative;
-                .close{
+
+                .close {
                     cursor: pointer;
                     position: absolute;
                     right: 20px;
                     top: 20px;
                 }
-                .kf{
+
+                .kf {
                     position: absolute;
                     left: 73px;
                     top: -50px;
                 }
-                .right{
+
+                .right {
                     display: flex;
                     flex-direction: column;
-                    .line1{
+
+                    .line1 {
                         font-size: 70px;
                         font-weight: 500;
                         color: #FFFFFF;
                         line-height: 80px;
                     }
-                    .line2{
+
+                    .line2 {
                         font-size: 29px;
                         font-weight: 400;
                         color: #FFFFFF;
                         margin: 10px 0;
                     }
-                    .line3{
+
+                    .line3 {
                         display: flex;
                         align-items: center;
-                        .text{
+
+                        .text {
                             font-size: 32px;
                             color: #FFFFFF;
                             margin-left: 20px;
@@ -1676,31 +1759,37 @@
                     }
                 }
             }
-            .bottom{
+
+            .bottom {
                 width: 100%;
                 height: 230px;
                 background-color: #ffffff;
-                border-bottom-left-radius: 5px ;
-                border-bottom-right-radius: 5px ;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
                 padding: 20px;
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
-                .line1{
+
+                .line1 {
                     width: 100%;
                     display: flex;
-                    ::v-deep .el-input:nth-child(2){
+
+                    ::v-deep .el-input:nth-child(2) {
                         margin-left: 10px;
                     }
                 }
-                .line2{
+
+                .line2 {
                     margin-top: 10px;
                     width: 100%;
                     display: flex;
-                    ::v-deep .el-textarea{
+
+                    ::v-deep .el-textarea {
                         margin-right: 10px;
                     }
-                    .el-button--danger{
+
+                    .el-button--danger {
                         background-color: #ff7f00;
                     }
                 }

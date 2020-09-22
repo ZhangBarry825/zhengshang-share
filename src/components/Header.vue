@@ -2,10 +2,10 @@
     <div class="header-page" id="fixed" :class="{'isFixed':isFixed}">
         <div class="center">
             <div class="logo">
-                <img :src="isFixed?logo1:logo" >
+                <img @click="goTo('/')" :src="isFixed?logo1:logo" >
             </div>
             <div class="menus">
-                <div class="menu" v-for="(item,index) in menuList">{{item.title}}</div>
+                <div class="menu" v-for="(item,index) in menuList" @click="goAnchor(item.id)">{{item.title}}</div>
             </div>
         </div>
     </div>
@@ -46,13 +46,32 @@
                     var sl = -Math.max(document.body.scrollLeft, document.documentElement.scrollLeft);
                     document.getElementById('fixed').style.left = sl + 'px';
                 }
+            },
+            goAnchor(selector) {
+                if(this.$route.fullPath != '/'){
+                    this.$router.push({
+                        path:'/'
+                    })
+                    setTimeout(()=>{
+                        document.getElementById(selector).scrollIntoView({ block: 'start', behavior: 'smooth' })
+                    })
+                }else {
+                    document.getElementById(selector).scrollIntoView({ block: 'start', behavior: 'smooth' })
+                }
+            },
+            goTo(url){
+                if(this.$route.fullPath != url){
+                    this.$router.push({
+                        path:url
+                    })
+                }
             }
         },
         mounted() {
-            if(this.needFixed){
-                this.isFixed=true
+            this.isFixed=this.needFixed
+            if(!this.needFixed){
+                window.addEventListener('scroll', this.handleScroll)
             }
-            window.addEventListener('scroll', this.handleScroll)
         }
     }
 </script>
@@ -65,7 +84,7 @@
         box-sizing: border-box;
         position: fixed;
         top: 0;
-        padding: 20px 0;
+        padding: 10px 0;
         width: 100%;
         min-width: 1200px;
         display: flex;

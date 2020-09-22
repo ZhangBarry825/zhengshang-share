@@ -15,3 +15,11 @@ export function postTest (data) {
         data
     })
 }
+
+export function formPost(data) {
+    return request({
+        url: '/index/contact/save',
+        method: 'post',
+        data
+    })
+}

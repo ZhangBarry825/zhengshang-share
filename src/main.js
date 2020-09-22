@@ -14,6 +14,14 @@ import 'vant/lib/index.css';
 
 import './assets/font/font.scss'
 
+Vue.prototype.$dia = ()=>{
+  var form = document.createElement('form');
+  form.action = 'https://live02.wasnnznyy.com/chat/chat/rRRLt%40AwGdSzybKiEGFYfA%24%24?lng=cn';
+  form.target = '_blank';
+  form.method = 'POST';
+  document.body.appendChild(form);
+  form.submit();
+};
 
 Vue.use(Vant);
 
