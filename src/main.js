@@ -23,6 +23,9 @@ Vue.prototype.$dia = ()=>{
   form.submit();
 };
 
+import {animateFun} from './utils/common.js';
+Vue.prototype.$ami = animateFun;
+
 Vue.use(Vant);
 
 new Vue({

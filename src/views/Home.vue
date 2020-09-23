@@ -48,7 +48,6 @@
                     </van-tabs>
                 </div>
             </div>
-
         </div>
         <div class="our-service" id="our-service">
             <div class="center">
@@ -61,7 +60,7 @@
                     <div class="title-line4">{{menuDescription.service}}</div>
                 </div>
                 <div class="items">
-                    <div class="item" v-for="(item,index) in ourService">
+                    <div :class="'item service-item'+index" v-for="(item,index) in ourService">
                         <div class="logo">
                             <img :src="item.img" alt="">
                         </div>
@@ -92,7 +91,7 @@
                     <div class="connection"></div>
                 </div>
                 <div class="context">
-                    <van-image width="530" height="420" fit="cover" :src="projectProcess[projectProcessIndex].img"/>
+                    <van-image class="active-right-img" width="530" height="420" fit="cover" :src="projectProcess[projectProcessIndex].img"/>
                     <div class="left">
                         <div class="line1">{{projectProcess[projectProcessIndex].title}}</div>
                         <div class="line2"></div>
@@ -113,7 +112,7 @@
                 </div>
                 <div class="context">
                     <div class="left">
-                        <div class="item" v-for="(item,index) in ourAdvantages.left">
+                        <div :class="'item adv-left'+index" v-for="(item,index) in ourAdvantages.left">
                             <div class="line1">
                                 <img :src="item.img" alt="">
                                 <div class="text">{{item.title}}</div>
@@ -123,10 +122,10 @@
                     </div>
                     <div class="middle">
                         <img src="../assets/images/advantage1.png" alt="">
-                        <div class="button">立即咨询</div>
+                        <div class="button" @click="openDialog">立即咨询</div>
                     </div>
                     <div class="right">
-                        <div class="item" v-for="(item,index) in ourAdvantages.right">
+                        <div :class="'item adv-right'+index" v-for="(item,index) in ourAdvantages.right">
                             <div class="line1">
                                 <div class="text">{{item.title}}</div>
                                 <img :src="item.img" alt="">
@@ -350,7 +349,7 @@
                 name: '',
                 tel: '',
                 message: '',
-                showDialog: false,
+                showDialog: true,
                 timer: '',
             };
         },
@@ -403,6 +402,24 @@
         mounted() {
             //自动咨询弹窗 30s
             this.autoAlertDialog()
+
+            this.$ami('.service-item0', 200, 'bottom', '30%', .8, true)
+            this.$ami('.service-item1', 300, 'bottom', '30%', .8, true)
+            this.$ami('.service-item2', 400, 'bottom', '30%', .8, true)
+            this.$ami('.service-item3', 500, 'bottom', '30%', .8, true)
+            this.$ami('.service-item4', 200, 'bottom', '30%', .8, true)
+            this.$ami('.service-item5', 300, 'bottom', '30%', .8, true)
+            this.$ami('.service-item6', 400, 'bottom', '30%', .8, true)
+            this.$ami('.service-item7', 500, 'bottom', '30%', .8, true)
+
+            this.$ami('.active-right-img', 200, 'right', '100%', 1, true)
+
+            this.$ami('.adv-left0', 200, 'right', '30%', .8, true)
+            this.$ami('.adv-left1', 200, 'right', '30%', .8, true)
+            this.$ami('.adv-left2', 200, 'right', '30%', .8, true)
+            this.$ami('.adv-right0', 200, 'left', '30%', .8, true)
+            this.$ami('.adv-right1', 200, 'left', '30%', .8, true)
+            this.$ami('.adv-right2', 200, 'left', '30%', .8, true)
         }
     }
 </script>
@@ -415,6 +432,7 @@
         opacity: 0;
     }
     .home {
+        overflow: hidden;
         width: 100%;
         min-width: 1200px;
 
@@ -476,6 +494,12 @@
 
                         .x {
                             margin: 0 50px;
+                            animation: spin 10s linear infinite;
+                        }
+                        @keyframes spin {
+                            to {
+                                transform: rotate(360deg);
+                            }
                         }
 
                         .text {
@@ -503,7 +527,7 @@
                     }
 
                     .line3 {
-                        margin-top: 30px;
+                        margin-top: 50px;
                         cursor: pointer;
                         width: 200px;
                         height: 60px;
@@ -518,6 +542,41 @@
                         color: #FFFFFF;
                         line-height: 24px;
                     }
+                    .line3 {
+                        z-index: 1;
+                        position: relative;
+                        font-size: inherit;
+                        font-family: inherit;
+                        color: white;
+                        outline: none;
+                        overflow: hidden;
+                        transition: color 0.4s ease-in-out;
+                    }
+
+                    .line3::before {
+                        content: '';
+                        z-index: -1;
+                        position: absolute;
+                        top: 100%;
+                        right: 100%;
+                        width: 1em;
+                        height: 1em;
+                        border-radius: 50%;
+                        background-color: #3cefff;
+                        transform-origin: center;
+                        transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+                        transition: transform 0.8s ease-in-out;
+                    }
+
+                    .line3:hover {
+                        cursor: pointer;
+                        color: #161616;
+                    }
+
+                    .line3:hover::before {
+                        transform: translate3d(50%, -50%, 0) scale3d(30, 30, 30);
+                    }
+
                 }
             }
 
@@ -607,6 +666,7 @@
                             background-color: #0d85f6;
                             @include background-center;
                             cursor: pointer;
+                            overflow: hidden;
 
                             .cover {
                                 width: 100%;
@@ -618,11 +678,45 @@
                                 opacity: 0;
                                 transition: all .5s;
                             }
+
                         }
 
                         .case-item:hover {
                             .cover {
                                 opacity: 1;
+                                animation:slideDownReturn 1s 1;
+                                -webkit-animation-name: slideDownReturn;
+                                animation-name: slideDownReturn;
+                            }
+                            @-webkit-keyframes slideDownReturn {
+                                0% {
+                                    -webkit-transform-origin: 0 0;
+                                    transform-origin: 0 0;
+                                    -webkit-transform: translateY(100%);
+                                    transform: translateY(100%);
+                                }
+
+                                100% {
+                                    -webkit-transform-origin: 0 0;
+                                    transform-origin: 0 0;
+                                    -webkit-transform: translateY(0%);
+                                    transform: translateY(0%);
+                                }
+                            }
+                            @keyframes slideDownReturn {
+                                0% {
+                                    -webkit-transform-origin: 0 0;
+                                    transform-origin: 0 0;
+                                    -webkit-transform: translateY(100%);
+                                    transform: translateY(100%);
+                                }
+
+                                100% {
+                                    -webkit-transform-origin: 0 0;
+                                    transform-origin: 0 0;
+                                    -webkit-transform: translateY(0%);
+                                    transform: translateY(0%);
+                                }
                             }
                         }
                     }
@@ -699,6 +793,7 @@
                     margin-top: 100px;
 
                     .item {
+                        cursor: pointer;
                         width: calc(25% - 10px);
                         height: 300px;
                         margin: 0 5px;
@@ -739,6 +834,17 @@
                             color: #666666;
                             line-height: 36px;
                             @include line-hidden(4)
+                        }
+                    }
+                    .item:hover{
+                        .logo {
+                            border-radius: 50%;
+                            animation: spin 3s linear infinite;
+                        }
+                        @keyframes spin {
+                            to {
+                                transform: rotate(360deg);
+                            }
                         }
                     }
 
@@ -829,7 +935,7 @@
                             align-items: center;
                             background-color: #CCCCCC;
                             border-radius: 50%;
-                            transition: background-color .5s;
+                            transition: all .5s;
                         }
 
                         .item-title {
@@ -839,13 +945,17 @@
                             color: #222222;
                         }
                     }
-
+                    .item:hover{
+                        .logo{
+                            transform: translate(0,-10px);
+                        }
+                    }
                     .selected {
                         .logo {
                             background-color: #0080FF;
+                            transform: translate(0,-10px);
                         }
                     }
-
                     .connection {
                         position: absolute;
                         top: 57px;
@@ -895,11 +1005,20 @@
                         position: absolute;
                         right: 60px;
                         top: -40px;
+                        overflow: hidden;
+                        cursor: pointer;
 
                         .van-image__img {
                             transition: all 1s;
                         }
                     }
+
+                    ::v-deep .van-image:hover {
+                        .van-image__img {
+                            transform: scale(1.1);
+                        }
+                    }
+
                 }
             }
         }
@@ -1039,6 +1158,7 @@
                             color: #FFFFFF;
                             cursor: pointer;
                         }
+
                     }
 
                     .right {
@@ -1795,6 +1915,61 @@
                 }
             }
         }
+
+        .dialog-box {
+            animation:twisterInUp 2s 1;
+            -webkit-animation-name: twisterInUp;
+            animation-name: twisterInUp;
+        }
+        @-webkit-keyframes twisterInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                -webkit-transform: scale(0, 0) rotate(180deg) translateY(100%);
+                transform: scale(0, 0) rotate(90deg) translateY(100%);
+            }
+
+            30% {
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                -webkit-transform: scale(0, 0) rotate(180deg) translateY(100%);
+                transform: scale(0, 0) rotate(90deg) translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scale(1, 1) rotate(0deg) translateY(0);
+                transform: scale(1, 1) rotate(0deg) translateY(0);
+            }
+        }
+        @keyframes twisterInUp {
+            0% {
+                opacity: 0;
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                -webkit-transform: scale(0, 0) rotate(90deg) translateY(100%);
+                transform: scale(0, 0) rotate(90deg) translateY(100%);
+            }
+
+            30% {
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                -webkit-transform: scale(0, 0) rotate(90deg) translateY(100%);
+                transform: scale(0, 0) rotate(90deg) translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scale(1, 1) rotate(0deg) translateY(0);
+                transform: scale(1, 1) rotate(0deg) translateY(0);
+            }
+        }
+
     }
 
 </style>

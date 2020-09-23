@@ -4,43 +4,53 @@ export const homeData = {
     menuList: [
         {
             title: '首页',
-            id: 'home'
+            id: 'home',
+            en_title:'HOME',
         },
         {
             title: '案例',
-            id: 'case'
+            id: 'case',
+            en_title:'CASE',
         },
         {
             title: '我们的服务',
-            id: 'our-service'
+            id: 'our-service',
+            en_title:'SERVICE',
         },
         {
             title: '项目流程',
-            id: 'project-process'
+            id: 'project-process',
+            en_title:'PROCESS',
         },
         {
             title: '我们的优势',
-            id: 'our-advantage'
+            id: 'our-advantage',
+            en_title:'ADVANTAGE',
         },
         {
             title: '疑问解答',
-            id: 'problems'
+            id: 'problems',
+            en_title:'PROBLEM',
         },
         {
             title: '产品定制',
-            id: 'products'
+            id: 'products',
+            en_title:'PRODUCT',
         },
         {
             title: '关于我们',
-            id: 'about-us'
+            id: 'about-us',
+            en_title:'ABOUT',
         },
         {
             title: '合作伙伴',
-            id: 'partners'
+            id: 'partners',
+            en_title:'PARTNER',
         },
         {
             title: '新闻动态',
-            id: 'news'
+            id: 'news',
+            en_title:'NEWS',
         },
     ],
     //模块描述

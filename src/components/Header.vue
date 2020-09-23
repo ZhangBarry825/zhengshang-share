@@ -5,7 +5,10 @@
                 <img @click="goTo('/')" :src="isFixed?logo1:logo" >
             </div>
             <div class="menus">
-                <div class="menu" v-for="(item,index) in menuList" @click="goAnchor(item.id)">{{item.title}}</div>
+                <div class="menu" v-for="(item,index) in menuList" @click="goAnchor(item.id)">
+                    <span class="ch">{{item.title}}</span>
+                    <span class="en">{{item.en_title}}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -64,6 +67,8 @@
                     this.$router.push({
                         path:url
                     })
+                }else {
+                    document.getElementById('home').scrollIntoView({ block: 'start', behavior: 'smooth' })
                 }
             }
         },
@@ -97,7 +102,37 @@
             justify-content: space-between;
             .logo{
                 cursor: pointer;
+
             }
+            .logo {
+                display: block;
+                z-index: 1;
+                position: relative;
+                font-size: inherit;
+                font-family: inherit;
+                color: white;
+                outline: none;
+                border: none;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            .logo::after {
+                content: '';
+                z-index: -1;
+                background-color: hsla(0, 0%, 100%, 0.2);
+                position: absolute;
+                top: -700%;
+                bottom: -100%;
+                width: 1.25em;
+                transform: translate3d(-700%, 0, 0) rotate(35deg);
+            }
+
+            .logo:hover::after {
+                transition: transform 1s ease-in-out;
+                transform: translate3d(1200%, 0, 0) rotate(35deg);
+            }
+
            .menus{
                display: flex;
                flex-direction: row;
@@ -106,6 +141,56 @@
                    color: #ffffff;
                    margin: 0 15px;
                    cursor: pointer;
+                   .ch{
+                       display: block;
+                   }
+                   .en{
+                       display: none;
+                   }
+                   span {
+                       position: relative;
+                       padding: 1px 0;
+                   }
+
+                   span::before, span::after {
+                       content: '';
+                       position: absolute;
+                       left: 0;
+                       right: 0;
+                       height: 2px;
+                       background-color: #fc2f70;
+                       transform: scaleX(0);
+                       transition: transform 0.5s ease;
+                   }
+
+                   span::before {
+                       top: 0;
+                       transform-origin: center right;
+                   }
+
+                   span:hover::before {
+                       transform-origin: center left;
+                       transform: scaleX(1);
+                   }
+
+                   span::after {
+                       bottom: 0;
+                       transform-origin: center left;
+                   }
+
+                   span:hover::after {
+                       transform-origin: center right;
+                       transform: scaleX(1);
+                   }
+               }
+               .menu:hover{
+
+                   .ch{
+                       display: block;
+                   }
+                   .en{
+                       display: none;
+                   }
                }
            }
         }
@@ -120,6 +205,9 @@
             .menus{
                 .menu{
                     color: #222222;
+                    span::before, span::after {
+                        background-color: #ff8000;
+                    }
                 }
             }
         }
