@@ -91,7 +91,8 @@
                     <div class="connection"></div>
                 </div>
                 <div class="context">
-                    <van-image class="active-right-img" width="530" height="420" fit="cover" :src="projectProcess[projectProcessIndex].img"/>
+                    <van-image class="active-right-img" width="530" height="420" fit="cover"
+                               :src="projectProcess[projectProcessIndex].img"/>
                     <div class="left">
                         <div class="line1">{{projectProcess[projectProcessIndex].title}}</div>
                         <div class="line2"></div>
@@ -193,43 +194,59 @@
                 </div>
                 <div class="context">
                     <div class="top"></div>
-                    <div class="bottom">
-                        <div class="right">
-                            <div class="line">{{aboutUs.description1}}</div>
-                            <div class="line">{{aboutUs.description2}}</div>
+                    <div class="bottom-box" id="scene0">
+                        <div class="bottom" data-depth="0.05">
+                            <div class="right" >
+                                <div class="line">{{aboutUs.description1}}</div>
+                                <div class="line">{{aboutUs.description2}}</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="img img1">
-                        <van-image
-                                width="100%"
-                                height="100%"
-                                fit="cover"
-                                :src="aboutUs.img1"
-                        />
-                    </div>
-                    <div class="img img2">
-                        <van-image
-                                width="100%"
-                                height="100%"
-                                fit="cover"
-                                :src="aboutUs.img2"
-                        />
-                    </div>
-                    <div class="img img3">
-                        <van-image
-                                width="100%"
-                                height="100%"
-                                fit="cover"
-                                :src="aboutUs.img3"
-                        />
-                    </div>
-                    <div class="img img4">
-                        <van-image
-                                width="100%"
-                                height="100%"
-                                fit="cover"
-                                :src="aboutUs.img4"
-                        />
+                    <div class="about-images-box">
+                        <div class="img img1">
+                            <div class="img-box" id="scene1">
+                                <van-image
+                                        data-depth="0.3"
+                                        width="100%"
+                                        height="100%"
+                                        fit="cover"
+                                        :src="aboutUs.img1"
+                                />
+                            </div>
+                        </div>
+                        <div class="img img2">
+                            <div class="img-box" id="scene2">
+                                <van-image
+                                        data-depth="0.2"
+                                        width="100%"
+                                        height="100%"
+                                        fit="cover"
+                                        :src="aboutUs.img2"
+                                />
+                            </div>
+                        </div>
+                        <div class="img img3">
+                            <div class="img-box" id="scene3">
+                                <van-image
+                                        data-depth="0.3"
+                                        width="100%"
+                                        height="100%"
+                                        fit="cover"
+                                        :src="aboutUs.img3"
+                                />
+                            </div>
+                        </div>
+                        <div class="img img4">
+                            <div class="img-box" id="scene4">
+                                <van-image
+                                        data-depth="0.3"
+                                        width="100%"
+                                        height="100%"
+                                        fit="cover"
+                                        :src="aboutUs.img4"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -319,7 +336,7 @@
 </template>
 
 <script>
-
+    import Parallax from 'parallax-js'
     import Header from "../components/Header";
     import {homeData} from "../../public/MockData";
     import Footer from "../components/Footer";
@@ -354,20 +371,20 @@
             };
         },
         methods: {
-            newsDetail(index){
+            newsDetail(index) {
                 this.$router.push({
-                    path:'/news',
-                    query:{
-                        newsIndex:index,
+                    path: '/news',
+                    query: {
+                        newsIndex: index,
                     }
                 })
             },
-            caseDetail(typeIndex,itemIndex){
+            caseDetail(typeIndex, itemIndex) {
                 this.$router.push({
-                    path:'/case',
-                    query:{
-                        typeIndex:typeIndex,
-                        itemIndex:itemIndex,
+                    path: '/case',
+                    query: {
+                        typeIndex: typeIndex,
+                        itemIndex: itemIndex,
                     }
                 })
             },
@@ -382,18 +399,18 @@
                     that.autoAlertDialog()
                 }, 30000)
             },
-            postForm(){
+            postForm() {
                 let that = this
                 formPost({
-                    name:this.name,
-                    mobile:this.tel,
-                    remark:this.message,
-                }).then((res)=>{
-                    if(res.code == 1){
+                    name: this.name,
+                    mobile: this.tel,
+                    remark: this.message,
+                }).then((res) => {
+                    if (res.code == 1) {
                         that.$message.success('提交成功，我们会尽快与您联系！')
-                        setTimeout(()=>{
-                            that.showDialog=false
-                        },2000)
+                        setTimeout(() => {
+                            that.showDialog = false
+                        }, 2000)
                     }
                 })
 
@@ -420,6 +437,17 @@
             this.$ami('.adv-right0', 200, 'left', '30%', .8, true)
             this.$ami('.adv-right1', 200, 'left', '30%', .8, true)
             this.$ami('.adv-right2', 200, 'left', '30%', .8, true)
+
+            var scene0 = document.getElementById('scene0');
+            var parallaxInstance0 = new Parallax(scene0);
+            var scene1 = document.getElementById('scene1');
+            var parallaxInstance1 = new Parallax(scene1);
+            var scene2 = document.getElementById('scene2');
+            var parallaxInstance2 = new Parallax(scene2);
+            var scene3 = document.getElementById('scene3');
+            var parallaxInstance3 = new Parallax(scene3);
+            var scene4 = document.getElementById('scene4');
+            var parallaxInstance4 = new Parallax(scene4);
         }
     }
 </script>
@@ -427,10 +455,11 @@
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s;
     }
-    .fade-enter, .fade-leave-to
-    {
+
+    .fade-enter, .fade-leave-to {
         opacity: 0;
     }
+
     .home {
         overflow: hidden;
         width: 100%;
@@ -496,6 +525,7 @@
                             margin: 0 50px;
                             animation: spin 10s linear infinite;
                         }
+
                         @keyframes spin {
                             to {
                                 transform: rotate(360deg);
@@ -542,6 +572,7 @@
                         color: #FFFFFF;
                         line-height: 24px;
                     }
+
                     .line3 {
                         z-index: 1;
                         position: relative;
@@ -684,10 +715,11 @@
                         .case-item:hover {
                             .cover {
                                 opacity: 1;
-                                animation:slideDownReturn 1s 1;
+                                animation: slideDownReturn 1s 1;
                                 -webkit-animation-name: slideDownReturn;
                                 animation-name: slideDownReturn;
                             }
+
                             @-webkit-keyframes slideDownReturn {
                                 0% {
                                     -webkit-transform-origin: 0 0;
@@ -836,11 +868,13 @@
                             @include line-hidden(4)
                         }
                     }
-                    .item:hover{
+
+                    .item:hover {
                         .logo {
                             border-radius: 50%;
                             animation: spin 3s linear infinite;
                         }
+
                         @keyframes spin {
                             to {
                                 transform: rotate(360deg);
@@ -945,17 +979,20 @@
                             color: #222222;
                         }
                     }
-                    .item:hover{
-                        .logo{
-                            transform: translate(0,-10px);
+
+                    .item:hover {
+                        .logo {
+                            transform: translate(0, -10px);
                         }
                     }
+
                     .selected {
                         .logo {
                             background-color: #0080FF;
-                            transform: translate(0,-10px);
+                            transform: translate(0, -10px);
                         }
                     }
+
                     .connection {
                         position: absolute;
                         top: 57px;
@@ -1534,6 +1571,53 @@
                     height: 850px;
                     position: relative;
 
+                    .about-images-box {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+
+                        .img {
+                            cursor: pointer;
+                            position: absolute;
+                            z-index: 2;
+
+                            .img-box {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .img1 {
+                            left: 38px;
+                            width: 470px;
+                            height: 674px;
+                        }
+
+                        .img2 {
+                            width: 261px;
+                            height: 198px;
+                            position: absolute;
+                            right: 300px;
+                            top: 30px;
+                        }
+
+                        .img3 {
+                            width: 156px;
+                            height: 198px;
+                            position: absolute;
+                            right: 120px;
+                            top: 30px;
+                        }
+
+                        .img4 {
+                            width: 404px;
+                            height: 172px;
+                            position: absolute;
+                            right: 120px;
+                            bottom: 30px;
+                        }
+                    }
+
                     .top {
                         width: 776px;
                         height: 332px;
@@ -1543,67 +1627,36 @@
                         left: 321px;
                     }
 
-                    .bottom {
+                    .bottom-box {
                         width: 1200px;
                         height: 465px;
-                        background: #0080FF;
                         position: absolute;
                         top: 270px;
-                        padding: 61px 52px 0 558px;
-                        box-sizing: border-box;
-                        display: flex;
-                        justify-content: flex-end;
-
-                        .right {
+                        .bottom {
                             width: 100%;
-                            max-height: 100%;
+                            height: 100%;
+                            background: #0080FF;
+                            padding: 61px 52px 0 558px;
+                            box-sizing: border-box;
                             display: flex;
-                            flex-direction: column;
+                            justify-content: flex-end;
 
-                            .line {
-                                text-indent: 2em;
-                                font-size: 18px;
-                                font-weight: 400;
-                                color: #FFFFFF;
-                                line-height: 36px;
-                                @include line-hidden(5);
+                            .right {
+                                width: 100%;
+                                max-height: 100%;
+                                display: flex;
+                                flex-direction: column;
+
+                                .line {
+                                    text-indent: 2em;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                    color: #FFFFFF;
+                                    line-height: 36px;
+                                    @include line-hidden(5);
+                                }
                             }
                         }
-                    }
-
-                    .img {
-                        position: absolute;
-                        z-index: 2;
-                    }
-
-                    .img1 {
-                        left: 38px;
-                        width: 470px;
-                        height: 674px;
-                    }
-
-                    .img2 {
-                        width: 261px;
-                        height: 198px;
-                        position: absolute;
-                        right: 300px;
-                        top: 30px;
-                    }
-
-                    .img3 {
-                        width: 156px;
-                        height: 198px;
-                        position: absolute;
-                        right: 120px;
-                        top: 30px;
-                    }
-
-                    .img4 {
-                        width: 404px;
-                        height: 172px;
-                        position: absolute;
-                        right: 120px;
-                        bottom: 30px;
                     }
                 }
             }
@@ -1819,7 +1872,7 @@
             height: 500px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 10px rgba(151,151,151,0.47);
+            box-shadow: 0 0 10px rgba(151, 151, 151, 0.47);
             border-radius: 5px;
 
             .top {
@@ -1917,10 +1970,11 @@
         }
 
         .dialog-box {
-            animation:twisterInUp 2s 1;
+            animation: twisterInUp 2s 1;
             -webkit-animation-name: twisterInUp;
             animation-name: twisterInUp;
         }
+
         @-webkit-keyframes twisterInUp {
             0% {
                 opacity: 0;
