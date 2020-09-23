@@ -1,22 +1,7 @@
 @font-face {
-
   font-family: Alibaba-PuHuiTi;   //重命名字体名称
-
-  src: url('./Alibaba-PuHuiTi-Regular.ttf');
-
-  font-weight: normal;
-
-  font-style: normal;
-
-}
-@font-face {
-
-  font-family: Alibaba-PuHuiTi;   //重命名字体名称
-
-  src: url('./Alibaba-PuHuiTi-Bold.ttf');
-
-  font-weight: bold;
-
-  font-style: normal;
-
+  src: url(./Alibaba-PuHuiTi-Regular.eot);
+  src: local('☺'),
+  url(./Alibaba-PuHuiTi-Regular.eot?#iefix) format('embedded-opentype'),
+  url(./Alibaba-PuHuiTi-Regular.ttf) format('truetype');
 }

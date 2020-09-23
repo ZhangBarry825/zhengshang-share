@@ -5,40 +5,37 @@
                 <div class="left">
                     <div class="column">
                         <div class="title">服务</div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/business')">
                             APP开发
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/business')">
                             小程序开发
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/business')">
                             网站建设
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/business')">
                             系统集成
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/business')">
                             物联网
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/business')">
                             政务云
                         </div>
                     </div>
                     <div class="column">
-                        <div class="title">服务</div>
-                        <div class="item">
-                            关于
-                        </div>
-                        <div class="item">
+                        <div class="title">关于</div>
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/about')">
                             公司简介
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/about')">
                             企业文化
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/contact')">
                             公司地址
                         </div>
-                        <div class="item">
+                        <div class="item" @click="goTo('http://www.zhengshangwl.com/#/contact')">
                             联系方式
                         </div>
                     </div>
@@ -107,6 +104,11 @@
                 qq2: require('../assets/images/icon_footer_qq2.png'),
                 footerData:homeData.footerData
             }
+        },
+        methods:{
+            goTo(url){
+                window.open(url,'_blank')
+            }
         }
     }
 </script>
@@ -149,6 +151,7 @@
                         }
 
                         .item {
+                            cursor: pointer;
                             font-size: 16px;
                             font-weight: 400;
                             color: #999999;

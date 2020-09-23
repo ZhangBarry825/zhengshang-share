@@ -8,6 +8,7 @@
 
 @mixin line-hidden($line:1){
   display: -webkit-box;
+  text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
   overflow: hidden;

@@ -263,12 +263,10 @@
                 </div>
                 <div class="items">
                     <div class="item" v-for="(item,index) in partners" v-if="index<10">
-                        <van-image
-                                width="10rem"
-                                height="10rem"
-                                fit="contain"
+                        <el-image
+                                style="width: 10rem; height: 10rem"
                                 :src="item.img"
-                        />
+                                :fit="'contain'"></el-image>
                     </div>
                 </div>
             </div>
@@ -429,7 +427,7 @@
             this.$ami('.service-item6', 400, 'bottom', '30%', .8, true)
             this.$ami('.service-item7', 500, 'bottom', '30%', .8, true)
 
-            this.$ami('.active-right-img', 200, 'right', '100%', 1, true)
+            this.$ami('.active-right-img', 300, 'right', '100%', 1, true)
 
             this.$ami('.adv-left0', 200, 'right', '30%', .8, true)
             this.$ami('.adv-left1', 200, 'right', '30%', .8, true)
@@ -656,11 +654,27 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
                         color: #EEEEEE;
                     }
+
+                    .title-line4 {
+                        position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #FFFEFE;
+                        bottom: 10px;
+                    }
+
+
                 }
 
                 .menus {
@@ -801,6 +815,8 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -810,6 +826,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -847,6 +867,9 @@
                             position: absolute;
                             top: -50px;
 
+                            left:50%;
+                            transform: translate(-50%,0);
+
                             img {
                                 width: 100px;
                                 height: 100px;
@@ -861,18 +884,22 @@
                         }
 
                         .item-content {
+                            width: 100%;
                             font-size: 18px;
                             font-weight: 400;
                             color: #666666;
                             line-height: 36px;
-                            @include line-hidden(4)
+                            @include line-hidden(4);
+
                         }
                     }
 
                     .item:hover {
                         .logo {
-                            border-radius: 50%;
-                            animation: spin 3s linear infinite;
+                            img{
+                                border-radius: 50%;
+                                animation: spin 3s linear infinite;
+                            }
                         }
 
                         @keyframes spin {
@@ -931,6 +958,10 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -939,6 +970,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #222222;
@@ -951,10 +986,16 @@
                     width: 100%;
                     display: flex;
                     flex-direction: row;
-                    position: relative;
                     justify-content: space-between;
-
+                    position: relative;
+                    .item:first-child{
+                        padding-left: 0;
+                    }
+                    .item:last-child{
+                        padding-right: 0;
+                    }
                     .item {
+                        padding: 0 20px;
                         cursor: pointer;
                         z-index: 1;
                         display: flex;
@@ -996,6 +1037,7 @@
                     .connection {
                         position: absolute;
                         top: 57px;
+                        left: 0;
                         width: 100%;
                         height: 2px;
                         background: #CCCCCC;
@@ -1105,6 +1147,8 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -1114,6 +1158,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -1190,11 +1238,33 @@
                             align-items: center;
                             position: absolute;
                             bottom: 150px;
+                            left:calc(50% - 95px);
+                            -ms-transform: translate(-50%,0);
                             font-size: 24px;
                             font-weight: 400;
                             color: #FFFFFF;
                             cursor: pointer;
                         }
+                        .button:hover {
+                            animation: jelly 0.5s;
+                        }
+
+                        @keyframes jelly {
+                            0%,
+                            100% {
+                                transform: scale(1, 1);
+                            }
+                            25% {
+                                transform: scale(0.9, 1.1);
+                            }
+                            50% {
+                                transform: scale(1.1, 0.9);
+                            }
+                            75% {
+                                transform: scale(0.95, 1.05);
+                            }
+                        }
+
 
                     }
 
@@ -1284,6 +1354,10 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -1292,6 +1366,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #222222;
@@ -1399,6 +1477,10 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -1408,6 +1490,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -1550,6 +1636,10 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -1558,6 +1648,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #222222;
@@ -1707,6 +1801,10 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -1716,6 +1814,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -1763,7 +1865,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding-bottom: 30px;
+            padding-bottom: 50px;
 
             .center {
                 width: 1200px;
@@ -1801,6 +1903,10 @@
 
                     .title-line3 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
                         font-weight: bold;
@@ -1809,6 +1915,10 @@
 
                     .title-line4 {
                         position: absolute;
+                        left:50%;
+                        width: 100%;
+                        text-align: center;
+                        transform: translate(-50%,0);
                         font-size: 18px;
                         font-weight: 400;
                         color: #222222;
@@ -1823,6 +1933,11 @@
                     flex-wrap: wrap;
                     flex-direction: row;
 
+                    .item:hover{
+                        ::v-deep .van-image{
+                            transform: scale(1.1);
+                        }
+                    }
                     .item {
                         cursor: pointer;
                         width: 373px;
@@ -1833,6 +1948,10 @@
                         .top {
                             width: 100%;
                             height: 260px;
+                            overflow: hidden;
+                            ::v-deep .van-image{
+                                transition: all 1s;
+                            }
                         }
 
                         .line1 {
@@ -1841,6 +1960,7 @@
                             color: #222222;
                             @include line-hidden(1);
                             margin: 30px 0;
+                            max-height: 40px;
                         }
 
                         .line2 {
@@ -1848,6 +1968,7 @@
                             font-weight: 400;
                             color: #666666;
                             line-height: 36px;
+                            max-height: 80px;
                             @include line-hidden(2);
                         }
                     }

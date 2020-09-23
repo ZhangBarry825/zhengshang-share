@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    store.commit('setLoading', true);
     if(routes.find((val)=>{
       return val.path == to.path
     })){
@@ -36,5 +38,11 @@ router.beforeEach((to, from, next) => {
       next('/')
     }
 })
+
+router.afterEach((to, from) => {
+  setTimeout(function() {
+    store.commit('setLoading', false);
+  }, 1000);
+});
 
 export default router
