@@ -12,16 +12,14 @@ Vue.use(ElementUI);
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
-import './assets/font/font.scss'
+// import './assets/font/font.scss'
 
 Vue.prototype.$dia = ()=>{
-  // var form = document.createElement('form');
-  // form.action = 'https://live02.wasnnznyy.com/chat/chat/rRRLt%40AwGdSzybKiEGFYfA%24%24?lng=cn';
-  // form.target = '_blank';
-  // form.method = 'POST';
-  // document.body.appendChild(form);
-  // form.submit();
-  window.open("https://live02.wasnnznyy.com/chat/chat/rRRLt%40AwGdSzybKiEGFYfA%24%24?lng=cn","","top=200,right=500,width=500,height=700");
+  var height = 700;
+  var width = 500;
+  var top=Math.round((window.screen.height-height)/2);
+  var left=Math.round((window.screen.width-width)/2);
+  window.open("https://live02.wasnnznyy.com/chat/chat/rRRLt%40AwGdSzybKiEGFYfA%24%24?lng=cn","","height=" + height + ", width=" + width + ", top=" + top + ", left= " + left + ", toolbar=no, menubar=no, scrollbars=auto, resizable=no, location=yes, status=no");
 };
 
 import {animateFun} from './utils/common.js';

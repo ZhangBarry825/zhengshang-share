@@ -149,7 +149,8 @@
                    }
                    span {
                        position: relative;
-                       padding: 1px 0;
+                       padding: 5px 0;
+                       display: block;
                    }
 
                    span::before, span::after {

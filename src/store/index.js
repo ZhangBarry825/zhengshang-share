@@ -9,7 +9,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setLoading(state, isLoading) {
-      console.log(isLoading);
+      //console.log(isLoading);
       state.isLoading = isLoading;
     }
   },

@@ -148,7 +148,7 @@
                     <div class="title-line4">{{menuDescription.problem}}</div>
                 </div>
                 <div class="items">
-                    <div class="item" v-for="(item,index) in problemList">
+                    <div :class="'item active-problem'+index" v-for="(item,index) in problemList">
                         <div class="number">0{{index+1}}</div>
                         <div class="item-title">{{item.title}}</div>
                         <div class="content">{{item.content}}</div>
@@ -262,10 +262,11 @@
                     <div class="title-line4">{{menuDescription.partner}}</div>
                 </div>
                 <div class="items">
-                    <div class="item" v-for="(item,index) in partners" v-if="index<10">
+                    <div class="item" v-for="(item,index) in partners" v-if="index<10" @mouseenter="changePic(index)">
                         <el-image
+                                class="img1"
                                 style="width: 10rem; height: 10rem"
-                                :src="item.img"
+                                :src="item.img1"
                                 :fit="'contain'"></el-image>
                     </div>
                 </div>
@@ -284,12 +285,11 @@
                 <div class="items">
                     <div class="item" v-for="(item,index) in newsList" @click="newsDetail(index)">
                         <div class="top">
-                            <van-image
-                                    width="100%"
-                                    height="100%"
-                                    fit="cover"
+                            <el-image
+                                    class="img1"
+                                    style="width: 100%; height: 100%"
                                     :src="item.img"
-                            />
+                                    :fit="'cover'"></el-image>
                         </div>
                         <div class="line1">{{item.title}}</div>
                         <div class="line2">{{item.content.description[0]}}</div>
@@ -319,7 +319,7 @@
                     <div class="line2">
                         <el-input
                                 type="textarea"
-                                placeholder="请输入内容"
+                                placeholder="请输入您的需求："
                                 v-model="message"
                                 resize="none"
                                 :rows="5"
@@ -364,11 +364,14 @@
                 name: '',
                 tel: '',
                 message: '',
-                showDialog: true,
+                showDialog: false,
                 timer: '',
             };
         },
         methods: {
+            changePic(index){
+                this.partners[index].img1=this.partners[index].img2
+            },
             newsDetail(index) {
                 this.$router.push({
                     path: '/news',
@@ -417,6 +420,9 @@
         mounted() {
             //自动咨询弹窗 30s
             this.autoAlertDialog()
+            setTimeout(()=>{
+              this.showDialog=true
+            },3000)
 
             this.$ami('.service-item0', 200, 'bottom', '30%', .8, true)
             this.$ami('.service-item1', 300, 'bottom', '30%', .8, true)
@@ -435,6 +441,13 @@
             this.$ami('.adv-right0', 200, 'left', '30%', .8, true)
             this.$ami('.adv-right1', 200, 'left', '30%', .8, true)
             this.$ami('.adv-right2', 200, 'left', '30%', .8, true)
+
+            this.$ami('.active-problem0', 300, 'bottom', '20%', .9, true)
+            this.$ami('.active-problem1', 300, 'bottom', '20%', .9, true)
+            this.$ami('.active-problem2', 300, 'bottom', '20%', .9, true)
+            this.$ami('.active-problem3', 300, 'bottom', '20%', .9, true)
+            this.$ami('.active-problem4', 300, 'bottom', '20%', .9, true)
+            this.$ami('.active-problem5', 300, 'bottom', '20%', .9, true)
 
             var scene0 = document.getElementById('scene0');
             var parallaxInstance0 = new Parallax(scene0);
@@ -485,10 +498,6 @@
                 padding: 0;
                 margin: 30px 5px;
 
-            }
-
-            ::v-deep .is-active {
-                background-color: #ff8000;
             }
 
             ::v-deep .el-carousel__arrow {
@@ -655,6 +664,7 @@
                     .title-line3 {
                         position: absolute;
                         left:50%;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -816,6 +826,7 @@
                     .title-line3 {
                         position: absolute;
                         left:50%;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -885,10 +896,12 @@
 
                         .item-content {
                             width: 100%;
+                            max-height: 130px;
+                            text-align: justify;
                             font-size: 18px;
                             font-weight: 400;
                             color: #666666;
-                            line-height: 36px;
+                            line-height: 1.5;
                             @include line-hidden(4);
 
                         }
@@ -961,6 +974,7 @@
                         left:50%;
                         width: 100%;
                         text-align: center;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1148,6 +1162,7 @@
                     .title-line3 {
                         position: absolute;
                         left:50%;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1239,7 +1254,7 @@
                             position: absolute;
                             bottom: 150px;
                             left:calc(50% - 95px);
-                            -ms-transform: translate(-50%,0);
+
                             font-size: 24px;
                             font-weight: 400;
                             color: #FFFFFF;
@@ -1357,6 +1372,7 @@
                         left:50%;
                         width: 100%;
                         text-align: center;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1389,6 +1405,8 @@
                     }
 
                     .item {
+                        transition: all .5s;
+                        cursor: pointer;
                         width: 550px;
                         height: 220px;
                         margin-bottom: 30px;
@@ -1425,6 +1443,10 @@
                             line-height: 36px;
                             @include line-hidden(3)
                         }
+                    }
+                    .item:hover{
+                        border: 2px solid gainsboro;
+                        box-shadow: 0 0 15px #EEEEEE;
                     }
 
 
@@ -1480,6 +1502,7 @@
                         left:50%;
                         width: 100%;
                         text-align: center;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1639,6 +1662,7 @@
                         left:50%;
                         width: 100%;
                         text-align: center;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1804,6 +1828,7 @@
                         left:50%;
                         width: 100%;
                         text-align: center;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1833,6 +1858,7 @@
                     flex-wrap: wrap;
 
                     .item {
+                        cursor: pointer;
                         width: 235px;
                         height: 239px;
                         background: #FFFFFF;
@@ -1840,6 +1866,14 @@
                         justify-content: center;
                         align-items: center;
                         border: 1px solid grey;
+                        ::v-deep .el-image{
+                            transition: all 1s;
+                        }
+                    }
+                    .item:hover{
+                        ::v-deep .el-image{
+                            transform: rotateY(360deg);
+                        }
                     }
 
                     .item:nth-child(1) {
@@ -1906,6 +1940,7 @@
                         left:50%;
                         width: 100%;
                         text-align: center;
+                        white-space: nowrap;
                         transform: translate(-50%,0);
                         top: 100px;
                         font-size: 72px;
@@ -1934,7 +1969,7 @@
                     flex-direction: row;
 
                     .item:hover{
-                        ::v-deep .van-image{
+                        ::v-deep .el-image{
                             transform: scale(1.1);
                         }
                     }
@@ -1949,7 +1984,7 @@
                             width: 100%;
                             height: 260px;
                             overflow: hidden;
-                            ::v-deep .van-image{
+                            ::v-deep .el-image{
                                 transition: all 1s;
                             }
                         }
@@ -1960,7 +1995,7 @@
                             color: #222222;
                             @include line-hidden(1);
                             margin: 30px 0;
-                            max-height: 40px;
+                            max-height: 1.2em;
                         }
 
                         .line2 {
@@ -2003,8 +2038,9 @@
                 height: 270px;
                 background-color: #0080ff;
                 background-image: url("../assets/images/kfbj.png");
-                @include background-center;
                 padding: 40px 73px;
+                background-position: top center;
+                background-repeat: no-repeat;
                 box-sizing: border-box;
                 display: flex;
                 justify-content: flex-end;
@@ -2081,6 +2117,9 @@
 
                     ::v-deep .el-textarea {
                         margin-right: 10px;
+                    }
+                    ::v-deep .el-textarea__inner{
+                        overflow-y:hidden
                     }
 
                     .el-button--danger {

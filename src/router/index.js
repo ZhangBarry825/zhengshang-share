@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   setTimeout(function() {
     store.commit('setLoading', false);
-  }, 1000);
+  }, 1200);
 });
 
 export default router

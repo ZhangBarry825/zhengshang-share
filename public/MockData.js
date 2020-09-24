@@ -552,42 +552,53 @@ export const homeData = {
     //合作伙伴
     partners:[
         {
-            img:require('../src/assets/images/partner1.png'),
+            img1:require('../src/assets/images/partner1.png'),//黑色图片
+            img2:require('../src/assets/images/partner11.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner2.png'),
+            img1:require('../src/assets/images/partner2.png'),//黑色图片
+            img2:require('../src/assets/images/partner22.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner3.png'),
+            img1:require('../src/assets/images/partner3.png'),//黑色图片
+            img2:require('../src/assets/images/partner33.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner4.png'),
+            img1:require('../src/assets/images/partner4.png'),//黑色图片
+            img2:require('../src/assets/images/partner44.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner5.png'),
+            img1:require('../src/assets/images/partner5.png'),//黑色图片
+            img2:require('../src/assets/images/partner55.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner6.png'),
+            img1:require('../src/assets/images/partner6.png'),//黑色图片
+            img2:require('../src/assets/images/partner66.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner7.png'),
+            img1:require('../src/assets/images/partner7.png'),//黑色图片
+            img2:require('../src/assets/images/partner77.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner8.png'),
+            img1:require('../src/assets/images/partner8.png'),//黑色图片
+            img2:require('../src/assets/images/partner88.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner9.png'),
+            img1:require('../src/assets/images/partner9.png'),//黑色图片
+            img2:require('../src/assets/images/partner99.png'),//彩色图片
         },
         {
-            img:require('../src/assets/images/partner10.png'),
+            img1:require('../src/assets/images/partner10.png'),//黑色图片
+            img2:require('../src/assets/images/partner1010.png'),//彩色图片
         },
+
     ],
     //新闻动态
     newsList:[
         {
             id:1,
             title:'热烈庆祝郑州正尚网络科技有限公司官网建设完成',
-            time:'2020-9-05',
+            time:'2020-9-24',
             img:require('../src/assets/images/photo4.png'),
             content: {
                 description:[
@@ -604,7 +615,7 @@ export const homeData = {
         {
             id:2,
             title:'热烈庆祝郑州正尚网络科技有限公司官网建设完成2',
-            time:'2020-9-05',
+            time:'2020-9-24',
             img:require('../src/assets/images/photo4.png'),
             content: {
                 description:[
@@ -621,7 +632,7 @@ export const homeData = {
         {
             id:3,
             title:'热烈庆祝郑州正尚网络科技有限公司官网建设完成3',
-            time:'2020-9-05',
+            time:'2020-9-24',
             img:require('../src/assets/images/photo4.png'),
             content: {
                 description:[
@@ -638,7 +649,7 @@ export const homeData = {
         {
             id:4,
             title:'热烈庆祝郑州正尚网络科技有限公司官网建设完成4',
-            time:'2020-9-05',
+            time:'2020-9-24',
             img:require('../src/assets/images/photo4.png'),
             content: {
                 description:[
@@ -655,7 +666,7 @@ export const homeData = {
         {
             id:5,
             title:'热烈庆祝郑州正尚网络科技有限公司官网建设完成5',
-            time:'2020-9-05',
+            time:'2020-9-24',
             img:require('../src/assets/images/photo4.png'),
             content: {
                 description:[
@@ -672,7 +683,7 @@ export const homeData = {
         {
             id:6,
             title:'热烈庆祝郑州正尚网络科技有限公司官网建设完成6',
-            time:'2020-9-05',
+            time:'2020-9-24',
             img:require('../src/assets/images/photo4.png'),
             content: {
                 description:[
