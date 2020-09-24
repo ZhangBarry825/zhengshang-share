@@ -509,6 +509,9 @@
                     font-size: 20px;
                 }
             }
+            ::v-deep .is-active{
+                background-color: #FF8000;
+            }
 
             .banner-item {
                 width: 100%;
