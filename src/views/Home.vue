@@ -322,7 +322,7 @@
                                 placeholder="请输入您的需求："
                                 v-model="message"
                                 resize="none"
-                                :rows="5"
+                                :rows="3"
                         ></el-input>
                         <el-button type="danger" @click="postForm">咨询</el-button>
                     </div>
@@ -2026,9 +2026,8 @@
             z-index: 9;
             position: fixed;
             top: calc(50% - 250px);
-            left: calc(50% - 340px);
-            width: 680px;
-            height: 500px;
+            left: calc(50% - 275px);
+            width: 550px;
             display: flex;
             flex-direction: column;
             box-shadow: 0 0 10px rgba(151, 151, 151, 0.47);
@@ -2038,10 +2037,10 @@
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
                 width: 100%;
-                height: 270px;
+                height: 250px;
                 background-color: #0080ff;
                 background-image: url("../assets/images/kfbj.png");
-                padding: 40px 73px;
+                padding: 40px 40px;
                 background-position: top center;
                 background-repeat: no-repeat;
                 box-sizing: border-box;
@@ -2058,8 +2057,9 @@
 
                 .kf {
                     position: absolute;
-                    left: 73px;
+                    left: 40px;
                     top: -50px;
+                    transform: scale(.9);
                 }
 
                 .right {
@@ -2067,25 +2067,27 @@
                     flex-direction: column;
 
                     .line1 {
-                        font-size: 70px;
+                        font-size: 50px;
                         font-weight: 500;
                         color: #FFFFFF;
                         line-height: 80px;
                     }
 
                     .line2 {
-                        font-size: 29px;
+                        font-size: 25px;
                         font-weight: 400;
                         color: #FFFFFF;
-                        margin: 10px 0;
+                        margin: 15px 0;
                     }
 
                     .line3 {
                         display: flex;
                         align-items: center;
-
+                        img{
+                            width: 30px;
+                        }
                         .text {
-                            font-size: 32px;
+                            font-size: 25px;
                             color: #FFFFFF;
                             margin-left: 20px;
                         }
@@ -2095,7 +2097,7 @@
 
             .bottom {
                 width: 100%;
-                height: 230px;
+                height: 160px;
                 background-color: #ffffff;
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
