@@ -115,7 +115,10 @@
                     <div class="left">
                         <div :class="'item adv-left'+index" v-for="(item,index) in ourAdvantages.left">
                             <div class="line1">
-                                <img :src="item.img" alt="">
+                                <el-image
+                                        style="width: 30px; height: 30px"
+                                        :src="item.img"
+                                        :fit="'contain'"></el-image>
                                 <div class="text">{{item.title}}</div>
                             </div>
                             <div class="line2">{{item.content}}</div>
@@ -129,7 +132,10 @@
                         <div :class="'item adv-right'+index" v-for="(item,index) in ourAdvantages.right">
                             <div class="line1">
                                 <div class="text">{{item.title}}</div>
-                                <img :src="item.img" alt="">
+                                <el-image
+                                        style="width: 30px; height: 30px"
+                                        :src="item.img"
+                                        :fit="'contain'"></el-image>
                             </div>
                             <div class="line2">{{item.content}}</div>
                         </div>
@@ -1573,7 +1579,7 @@
                             flex-direction: column;
                             align-items: center;
                             justify-content: space-around;
-                            padding: 20px 0;
+                            padding: 20px;
                             box-sizing: border-box;
 
                             .line1 {
@@ -1587,8 +1593,9 @@
                             }
 
                             .line2 {
-                                @include line-hidden(1);
-                                font-size: 24px;
+                                @include line-hidden(2);
+                                text-align: center;
+                                font-size: 20px;
                                 font-weight: 400;
                                 color: #999999;
                             }

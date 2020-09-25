@@ -21,17 +21,18 @@
             </div>
         </div>
         <div class="content">
-            <div class="title">{{newsList[0].title}}</div>
-            <div class="time">{{newsList[0].time}} 发布</div>
-            <div class="text" v-for="(item,index) in newsList[newsIndex].content.description">{{item}}</div>
-            <div class="img">
+            <div class="title">{{newsList[newsIndex].title}}</div>
+            <div class="time">{{newsList[newsIndex].time}} 发布</div>
+<!--            <div class="text" v-for="(item,index) in newsList[newsIndex].content.description">{{item}}</div>-->
+            <div class="img" v-if="newsList[newsIndex].content.img">
                 <van-image
                         width="100%"
                         fit="contain"
-                        :src="newsList[0].img"
+                        :src="newsList[newsIndex].content.img"
                 />
             </div>
-            <div class="text" v-for="(item,index) in newsList[newsIndex].content.text">{{item}}</div>
+<!--            <div class="text" v-for="(item,index) in newsList[newsIndex].content.text">{{item}}</div>-->
+            <div class="html" v-html="newsList[newsIndex].content.html"></div>
         </div>
         <Footer></Footer>
     </div>
@@ -51,15 +52,17 @@
         data(){
             return{
                 newsList:homeData.newsList,
-                newsIndex:0
+                newsIndex:''
             }
         },
         methods:{
 
         },
+        created() {
+            this.newsIndex=this.$route.query.newsIndex
+        },
         mounted() {
             window.scroll(0,0)
-            this.newsIndex=this.$route.query.index||0
         }
     }
 </script>
@@ -152,6 +155,14 @@
             .img{
                 width: 100%;
                 margin: 20px 0;
+            }
+            .html{
+                width: 100%;
+                ::v-deep{
+                    img{
+                        max-width: 100%;
+                    }
+                }
             }
         }
     }
