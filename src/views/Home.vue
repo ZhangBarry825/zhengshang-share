@@ -718,14 +718,14 @@
 
                     .tab-content {
                         margin-top: 30px;
-                        height: 640px;
+                        height: 700px;
                         width: 100%;
                         display: flex;
                         flex-direction: row;
                         flex-wrap: wrap;
 
                         .case-item {
-                            width: 33.33%;
+                            width: 380px;
                             height: 50%;
                             background-color: #0d85f6;
                             @include background-center;
@@ -743,6 +743,12 @@
                                 transition: all .5s;
                             }
 
+                        }
+                        .case-item:nth-child(2),.case-item:nth-child(5){
+                            margin: 0 30px;
+                        }
+                        .case-item:nth-child(-n+3){
+                            margin-bottom: 30px;
                         }
 
                         .case-item:hover {
