@@ -3,20 +3,60 @@
         <Header></Header>
         <div class="swipe-box">
             <el-carousel indicator-position="50px">
-                <el-carousel-item v-for="item in swipeList">
-                    <div class="banner-item" :style="'background-image: url('+item.img+')'">
+                <el-carousel-item >
+                    <div class="banner-item banner-item1" :style="'background-image: url('+swipeList[0].img+')'">
                         <div class="banner-context">
                             <div class="line1">
-                                <div class="text text1">{{item.leftText}}</div>
+                                <div class="text text1">{{swipeList[0].leftText}}</div>
                                 <div class="x">
                                     <img src="../assets/images/banner-x.png" alt="">
                                 </div>
-                                <div class="text text2">{{item.rightText}}</div>
+                                <div class="text text2">{{swipeList[0].rightText}}</div>
                             </div>
                             <div class="line2">
-                                {{item.description}}
+                                {{swipeList[0].description}}
                             </div>
                             <div class="line3" @click="openDialog">立即咨询</div>
+                        </div>
+                    </div>
+                </el-carousel-item>
+                <el-carousel-item >
+                    <div class="banner-item banner-item2">
+                        <div class="banner-context">
+                            <div class="left">
+                                <div class="line1">
+                                    <div class="text">{{swipeList[1].leftText}}</div>
+                                </div>
+                                <div class="line2">
+                                    <div class="text">{{swipeList[1].description}}</div>
+                                </div>
+                                <div class="line3" @click="openDialog">立即咨询</div>
+                            </div>
+                            <div class="right">
+                                <el-image
+                                        :src="swipeList[1].img"
+                                        :fit="'contain'"></el-image>
+                            </div>
+                        </div>
+                    </div>
+                </el-carousel-item>
+                <el-carousel-item >
+                    <div class="banner-item banner-item3">
+                        <div class="banner-context">
+                            <div class="left">
+                                <div class="line1">
+                                    <div class="text">{{swipeList[2].leftText}}</div>
+                                </div>
+                                <div class="line2">
+                                    <div class="text">{{swipeList[2].description}}</div>
+                                </div>
+                                <div class="line3" @click="openDialog">立即咨询</div>
+                            </div>
+                            <div class="right">
+                                <el-image
+                                        :src="swipeList[2].img"
+                                        :fit="'contain'"></el-image>
+                            </div>
                         </div>
                     </div>
                 </el-carousel-item>
@@ -519,7 +559,7 @@
                 background-color: #FF8000;
             }
 
-            .banner-item {
+            .banner-item1 {
                 width: 100%;
                 height: 100%;
                 background-image: url("../assets/images/bg.png");
@@ -626,7 +666,186 @@
 
                 }
             }
+            .banner-item2 {
+                width: 100%;
+                height: 100%;
+                background-color: #21172b;
+                display: flex;
+                justify-content: center;
 
+                .banner-context {
+                    width: 1200px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    .left{
+                        .line1 {
+                            .text {
+                                letter-spacing: 3px;
+                                font-size: 72px;
+                                font-weight: bold;
+                                color: #0ce2a1;
+                            }
+                        }
+
+                        .line2 {
+                            margin-top: 50px;
+                            margin-bottom: 50px;
+                            .text{
+                                letter-spacing: 7px;
+                                font-size: 36px;
+                                font-weight: 400;
+                                color: #FFFFFF;
+                            }
+                        }
+
+                        .line3 {
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 24px;
+                            font-weight: 400;
+                            color: #FFFFFF;
+                            width: 200px;
+                            height: 60px;
+                            border: 1px solid rgba(255, 255, 255, .5);
+                            border-radius: 30px;
+                        }
+
+                        .line3 {
+                            z-index: 1;
+                            position: relative;
+                            font-size: inherit;
+                            font-family: inherit;
+                            color: white;
+                            outline: none;
+                            overflow: hidden;
+                            transition: color 0.4s ease-in-out;
+                        }
+
+                        .line3::before {
+                            content: '';
+                            z-index: -1;
+                            position: absolute;
+                            top: 100%;
+                            right: 100%;
+                            width: 1em;
+                            height: 1em;
+                            border-radius: 50%;
+                            background-color: #3cefff;
+                            transform-origin: center;
+                            transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+                            transition: transform 0.8s ease-in-out;
+                        }
+
+                        .line3:hover {
+                            cursor: pointer;
+                            color: #161616;
+                        }
+
+                        .line3:hover::before {
+                            transform: translate3d(50%, -50%, 0) scale3d(30, 30, 30);
+                        }
+                    }
+                    .right{
+
+                    }
+
+
+                }
+            }
+            .banner-item3 {
+                width: 100%;
+                height: 100%;
+                background-color: #07074a;
+                display: flex;
+                justify-content: center;
+
+                .banner-context {
+                    width: 1200px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    .left{
+                        .line1 {
+                            .text {
+                                letter-spacing: 3px;
+                                font-size: 72px;
+                                font-weight: bold;
+                                color: #3485FF;
+                            }
+                        }
+
+                        .line2 {
+                            margin-top: 50px;
+                            margin-bottom: 50px;
+                            .text{
+                                letter-spacing: 7px;
+                                font-size: 36px;
+                                font-weight: 400;
+                                color: #FFFFFF;
+                            }
+                        }
+
+                        .line3 {
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 24px;
+                            font-weight: 400;
+                            color: #FFFFFF;
+                            width: 200px;
+                            height: 60px;
+                            border: 1px solid rgba(255, 255, 255, .5);
+                            border-radius: 30px;
+                        }
+
+                        .line3 {
+                            z-index: 1;
+                            position: relative;
+                            font-size: inherit;
+                            font-family: inherit;
+                            color: white;
+                            outline: none;
+                            overflow: hidden;
+                            transition: color 0.4s ease-in-out;
+                        }
+
+                        .line3::before {
+                            content: '';
+                            z-index: -1;
+                            position: absolute;
+                            top: 100%;
+                            right: 100%;
+                            width: 1em;
+                            height: 1em;
+                            border-radius: 50%;
+                            background-color: #3cefff;
+                            transform-origin: center;
+                            transform: translate3d(50%, -50%, 0) scale3d(0, 0, 0);
+                            transition: transform 0.8s ease-in-out;
+                        }
+
+                        .line3:hover {
+                            cursor: pointer;
+                            color: #161616;
+                        }
+
+                        .line3:hover::before {
+                            transform: translate3d(50%, -50%, 0) scale3d(30, 30, 30);
+                        }
+                    }
+                    .right{
+
+                    }
+
+
+                }
+            }
         }
 
         .case {
@@ -2205,19 +2424,3 @@
     }
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

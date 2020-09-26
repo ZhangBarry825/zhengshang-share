@@ -81,16 +81,16 @@ export const homeData = {
             description:'全行业APP/小程序定制开发'
         },
         {
-            img:require('../src/assets/images/bg.png'),
-            leftText:'专业开发',
-            rightText:'高端定制',
-            description:'全行业APP/小程序定制开发'
+            img:require('../src/assets/images/banner2.png'),
+            leftText:'APP/小程序开发',
+            rightText:'',
+            description:'打造移动时代用户新体验'
         },
         {
-            img:require('../src/assets/images/bg.png'),
-            leftText:'专业开发',
-            rightText:'高端定制',
-            description:'全行业APP/小程序定制开发'
+            img:require('../src/assets/images/banner3.png'),
+            leftText:'一站式解决方案',
+            rightText:'',
+            description:'高效/优质/值得信赖的服务'
         },
     ],
     //客户案例
