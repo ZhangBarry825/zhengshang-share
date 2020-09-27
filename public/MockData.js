@@ -422,18 +422,18 @@ export const homeData = {
         right:[
             {
                 img:require('../src/assets/images/adv4.png'),
-                title:'强大专业的技术团队',
+                title:'专业的技术团队',
                 content:'我们的技术都是有多年的行业的精英，开发过众多行业的项目，能更多的为项目赋予价值。'
             },
             {
                 img:require('../src/assets/images/adv5.png'),
                 title:'用户至上的服务',
-                content:'用户是我们项目的检验者，用户体验是一个项目成功的关键，所以我们更注重项目的体验。'
+                content:'用户是我们项目的检验者，用户体验是目成功关键，所以我们更注重项目体验。'
             },
             {
                 img:require('../src/assets/images/adv6.png'),
                 title:'众多行业开发经验',
-                content:'团队多年的开发经验，让我们了解众多的行业，从而可以为客户提供专业化的建议。'
+                content:'团队多年的开发经验，我们了解众多的行业，从而可以为客户提供专业化建议。'
             },
         ],
     },

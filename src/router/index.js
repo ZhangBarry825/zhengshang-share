@@ -20,6 +20,17 @@ const routes = [
     name: 'News',
     component: () => import('../views/News')
   },
+
+  {
+    path: '/mobile',
+    name: 'Mobile',
+    component: () => import('../views/mobile/MobileHome')
+  },
+  {
+    path: '/mobile/case',
+    name: 'MobileCase',
+    component: () => import('../views/mobile/MobileCase')
+  },
 ]
 
 const router = new VueRouter({
