@@ -215,7 +215,7 @@
                         <div class="title-line1"></div>
                         <div class="title-line2">定制适合您的产品</div>
                     </div>
-                    <div class="title-line3">CUSTOMIZE YOUR PRODUCTS</div>
+                    <div class="title-line3">CUSTOMIZE</div>
                     <div class="title-line4">{{menuDescription.product}}</div>
                 </div>
                 <div class="items">
