@@ -22,9 +22,21 @@
         computed: {
             ...mapState(['isLoading']),
         },
+        mounted() {
+            let  device=localStorage.getItem('device')
+            if(device == 'pc'){
+                let script = document.createElement('script')
+                script.type = 'text/javascript'
+                script.text = `(function (w, d, s, h) {_s = d.createElement(s);_s.async = true;_s.charset = 'UTF-8';_s.src = h;d.body.appendChild(_s);})(window, document, 'script', 'https://chat02.kuailiankeji.com/chat/include/rRRLt%40AwGdSzybKiEGFYfA%24%24?lng=cn');`
+                document.getElementsByTagName('head')[0].appendChild(script)
+            }
+        }
     }
 </script>
 <style lang="scss">
+    .KLT-FLOAT{
+        display: none !important;
+    }
     .fade-leave-active {
         transition: opacity .5s;
     }
@@ -60,26 +72,26 @@
                 }
 
                 .outer {
-                    width: 3.5em;
-                    height: 3.5em;
-                    margin-left: -1.75em;
-                    margin-top: -1.75em;
+                    width: 80px;
+                    height:  80px;
+                    margin-left: -40px;
+                    margin-top: -40px;
                     animation: spin 2s linear infinite;
                 }
 
                 .middle {
-                    width: 2.1em;
-                    height: 2.1em;
-                    margin-left: -1.05em;
-                    margin-top: -1.05em;
+                    width: 50px;
+                    height:  50px;
+                    margin-left: -25px;
+                    margin-top: -25px;
                     animation: spin 1.75s linear reverse infinite;
                 }
 
                 .inner {
-                    width: 0.8em;
-                    height: 0.8em;
-                    margin-left: -0.4em;
-                    margin-top: -0.4em;
+                    width: 20px;
+                    height:20px;
+                    margin-left: -10px;
+                    margin-top:  -10px;
                     animation: spin 1.5s linear infinite;
                 }
 
@@ -90,7 +102,8 @@
                 }
             }
             h2{
-                margin-top: 50px;
+                font-size: 20px;
+                margin-top: 80px;
             }
         }
     }

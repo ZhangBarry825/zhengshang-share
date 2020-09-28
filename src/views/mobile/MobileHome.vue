@@ -348,16 +348,7 @@
                 </div>
             </div>
         </div>
-        <div class="float-bottom">
-            <div class="left">
-                <img src="../../assets/images/mobile/tel_m.png" alt="">
-                <div class="text">拨打电话</div>
-            </div>
-            <div class="right">
-                <img src="../../assets/images/mobile/talk_m.png" alt="">
-                <div class="text">在线咨询</div>
-            </div>
-        </div>
+        <MobileFloat></MobileFloat>
         <MobileFooter></MobileFooter>
     </div>
 </template>
@@ -369,13 +360,15 @@
     import Footer from "../../components/Footer";
     import {formPost} from "../../utils/api";
     import MobileFooter from "../../components/MobileFooter";
+    import MobileFloat from "../../components/MobileFloat";
 
     export default {
         name: 'MobileHome',
         components: {
             Header,
             Footer,
-            MobileFooter
+            MobileFooter,
+            MobileFloat
         },
         data() {
             return {
@@ -2122,50 +2115,7 @@
             }
         }
 
-        .float-bottom{
-            z-index: 9;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            height: 1.293rem;
-            .left{
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #0080FF;
-                img{
-                    width: 0.48rem;
-                    height: 0.48rem;
-                    margin-right: 0.133rem;
-                }
-                .text{
-                    font-size: 0.453rem;
-                    font-weight: 400;
-                    color: #FFFFFF;
-                }
-            }
-            .right{
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #FF8000;
-                img{
-                    width: 0.48rem;
-                    height: 0.48rem;
-                    margin-right: 0.133rem;
-                }
-                .text{
-                    font-size: 0.453rem;
-                    font-weight: 400;
-                    color: #FFFFFF;
-                }
-            }
-        }
+
 
         .dialog-box {
             z-index: 9;

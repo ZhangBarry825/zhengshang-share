@@ -170,6 +170,7 @@
                         display: flex;
                         flex-direction: row;
                         margin: 0.05rem 0;
+                        align-items: center;
                         .item-left {
                             img {
                                 width: 0.667rem;

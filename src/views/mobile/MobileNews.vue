@@ -1,8 +1,8 @@
 <template>
-    <div class="case-page">
+    <div class="news-page">
         <div class="background">
             <div class="header-logo">
-                <div class="left"  @click="$router.push('/mobile')">
+                <div class="left" @click="$router.push('/mobile')">
                     <img src="../../assets/images/mobile/logo.png" alt="">
                 </div>
                 <div class="right"></div>
@@ -19,13 +19,16 @@
             </div>
         </div>
         <div class="content">
-            <div class="right">
+            <div class="title">{{newsList[newsIndex].title}}</div>
+            <div class="time">{{newsList[newsIndex].time}} 发布</div>
+            <div class="img" v-if="newsList[newsIndex].content.img">
                 <van-image
                         width="100%"
                         fit="contain"
-                        :src="customerCase[typeIndex].items[itemIndex].img"
+                        :src="newsList[newsIndex].content.img"
                 />
             </div>
+            <div class="html" v-html="newsList[newsIndex].content.html"></div>
         </div>
         <MobileFooter></MobileFooter>
     </div>
@@ -38,30 +41,26 @@
     import MobileFooter from "../../components/MobileFooter";
 
     export default {
-        name: "MobileCase",
-        components: {
+        name: "MobileNews",
+        components:{
             Header,
             Footer,
             MobileFooter
         },
-        data() {
-            return {
-                customerCase: homeData.customerCase,
-                typeIndex: 0,
-                itemIndex: 0
+        data(){
+            return{
+                newsList:homeData.newsList,
+                newsIndex:''
             }
         },
-        methods: {
-            changeItem(index) {
-                this.itemIndex = index;
-                window.scroll(0, 0)
-            }
+        methods:{
+
+        },
+        created() {
+            this.newsIndex=this.$route.query.newsIndex
         },
         mounted() {
-            window.scroll(0, 0)
-            this.typeIndex = this.$route.query.typeIndex || 0
-            this.itemIndex = this.$route.query.itemIndex || 0
-
+            window.scroll(0,0)
             let clientWidth = document.documentElement.clientWidth;
             document.documentElement.style.fontSize = clientWidth / 10 + 'px';
         }
@@ -69,7 +68,7 @@
 </script>
 
 <style scoped lang="scss">
-    .case-page {
+    .news-page{
         width: 100%;
         min-height: 100%;
         display: flex;
@@ -146,16 +145,56 @@
         .content{
             width: 100%;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            .right{
+            flex-direction: column;
+            align-items: center;
+            padding: 0.267rem;
+            box-sizing: border-box;
+            .title{
+                margin-top: 0.533rem;
                 width: 100%;
+                text-align: center;
+                font-size: 0.453rem;
+                font-weight: 400;
+                color: #222222;
+            }
+            .time{
+                font-size: 0.32rem;
+                font-weight: 400;
+                color: #CCCCCC;
+                margin-top: 0.36rem;
+                margin-bottom: 0.653rem;
+            }
+            .img{
+
+            }
+            .html{
+                width: 100%;
+                font-size: 0.4rem;
+                img{
+                    max-width: 100%;
+                }
             }
         }
-
-
     }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
