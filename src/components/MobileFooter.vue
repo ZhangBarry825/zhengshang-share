@@ -184,10 +184,10 @@
                             flex-direction: column;
 
                             .line {
-                                font-size: 0.213rem;
+                                font-size: 0.3rem;
                                 font-weight: 400;
                                 color: #999999;
-                                line-height: 0.4rem;
+                                line-height: 1.5;
                             }
                         }
                     }
@@ -205,7 +205,7 @@
                     }
                     .text{
                         margin-top: 0.4rem;
-                        font-size: 0.213rem;
+                        font-size: 0.3rem;
                         font-weight: 400;
                         color: #999999;
                     }

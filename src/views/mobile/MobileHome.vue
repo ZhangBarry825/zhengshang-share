@@ -503,8 +503,8 @@
             box-sizing: border-box;
             .left{
                 img{
-                    width: 2.133rem;
-                    height: 0.64rem;   
+                    width: 100px;
+                    height: 30px;
                 }
             }
         }
@@ -802,7 +802,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 18px;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
                         bottom: 10px;
@@ -823,7 +823,7 @@
                             .van-tabs__nav {
                                 /*padding-bottom: 50px;*/
                                 .van-tab__text {
-                                    font-size: 0.32rem;
+                                    font-size: 0.4rem;
                                     font-weight: 400;
                                 }
                             }
@@ -972,7 +972,7 @@
                         top: 2.333rem;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.32rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
                         bottom: 10px;
@@ -1024,8 +1024,8 @@
                         }
 
                         .item-title {
-                            font-size: 0.32rem;
-                            font-weight: 400;
+                            font-size: 0.4rem;
+                            font-weight: 500;
                             color: #222222;
                             margin: 0.267rem 0;
                         }
@@ -1033,10 +1033,10 @@
                         .item-content {
                             width: 100%;
                             text-align: justify;
-                            font-size: 0.3rem;
+                            font-size: 0.35rem;
                             font-weight: 400;
                             color: #666666;
-                            line-height: 2;
+                            line-height: 1.5;
                             @include line-hidden(4);
 
                         }
@@ -1119,7 +1119,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
                         bottom: 0.133rem;
@@ -1168,7 +1168,7 @@
 
                         .item-title {
                             margin-top: 0.267rem;
-                            font-size: 0.24rem;
+                            font-size: 0.3rem;
                             font-weight: 400;
                             color: #222222;
                         }
@@ -1227,7 +1227,7 @@
                         }
 
                         .line3 {
-                            font-size: 0.24rem;
+                            font-size: 0.3rem;
                             font-weight: 400;
                             color: #FFFFFF;
                             line-height: 2;
@@ -1319,7 +1319,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
                         bottom: 0.133rem;
@@ -1347,7 +1347,7 @@
                                 display: flex;
                                 align-items: center;
                                 .text {
-                                    font-size: 0.32rem;
+                                    font-size: 0.35rem;
                                     font-weight: bold;
                                     color: #FFFFFF;
                                     margin-left: 0.1rem;
@@ -1356,7 +1356,7 @@
 
                             .line2 {
                                 margin-top: 0.24rem;
-                                font-size: 0.24rem;
+                                font-size: 0.3rem;
                                 font-weight: 400;
                                 color: #FFFFFF;
                                 line-height: 0.48rem;
@@ -1402,7 +1402,7 @@
                                 }
 
                                 .text {
-                                    font-size: 0.32rem;
+                                    font-size: 0.35rem;
                                     font-weight: bold;
                                     color: #FFFFFF;
                                     margin-right: 0.1rem;
@@ -1411,7 +1411,7 @@
 
                             .line2 {
                                 margin-top: 0.24rem;
-                                font-size: 0.24rem;
+                                font-size: 0.3rem;
                                 font-weight: 400;
                                 color: #FFFFFF;
                                 line-height: 0.48rem;
@@ -1487,7 +1487,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
                         bottom: 0.133rem;
@@ -1529,14 +1529,14 @@
                         }
 
                         .item-title {
-                            font-size: 0.32rem;
+                            font-size: 0.4rem;
                             font-weight: bold;
                             color: #222222;
                         }
 
                         .content {
                             margin-top: 0.133rem;
-                            font-size: 0.24rem;
+                            font-size: 0.35rem;
                             font-weight: 400;
                             color: #666666;
                             line-height: 1.5;
@@ -1616,7 +1616,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
                         bottom: 0.133rem;
@@ -1688,7 +1688,7 @@
                             .line2 {
                                 @include line-hidden(2);
                                 text-align: center;
-                                font-size: 0.267rem;
+                                font-size: 0.3rem;
                                 font-weight: 400;
                                 color: #999999;
                             }
@@ -1701,7 +1701,7 @@
                                 border: 1px solid #0080FF;
                                 border-radius: 0.4rem;
 
-                                font-size: 0.32rem;
+                                font-size: 0.36rem;
                                 font-weight: 400;
                                 color: #0080FF;
                                 display: flex;
@@ -1779,7 +1779,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
                         bottom: 0.133rem;
@@ -1868,7 +1868,7 @@
 
                                 .line {
                                     text-indent: 2em;
-                                    font-size: 0.3rem;
+                                    font-size: 0.33rem;
                                     font-weight: 400;
                                     color: #FFFFFF;
                                     line-height: 0.48rem;
@@ -1950,7 +1950,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
                         bottom: 0.133rem;
@@ -2060,7 +2060,7 @@
                         width: 100%;
                         text-align: center;
                         transform: translate(-50%,0);
-                        font-size: 0.24rem;
+                        font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
                         bottom: 0.133rem;
@@ -2094,7 +2094,7 @@
                         }
 
                         .line1 {
-                            font-size: 0.32rem;
+                            font-size: 0.35rem;
                             font-weight: bold;
                             color: #222222;
                             @include line-hidden(1);
@@ -2103,10 +2103,10 @@
                         }
 
                         .line2 {
-                            font-size: 0.24rem;
+                            font-size: 0.3rem;
                             font-weight: 400;
                             color: #666666;
-                            line-height: 0.48rem;
+                            line-height: 1.5;
                             max-height: 1.067rem;
                             @include line-hidden(2);
                         }
