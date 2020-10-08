@@ -875,6 +875,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -1043,6 +1044,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -1189,6 +1191,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -1379,6 +1382,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -1587,6 +1591,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -1717,6 +1722,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -1878,6 +1884,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -2044,6 +2051,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;
@@ -2156,6 +2164,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 25px;
                             height: 5px;
                             background-color: #FF7F00;

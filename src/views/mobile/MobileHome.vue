@@ -771,6 +771,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -939,6 +940,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -1086,6 +1088,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -1287,6 +1290,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -1454,6 +1458,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -1582,6 +1587,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -1746,6 +1752,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -1916,6 +1923,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
@@ -2024,6 +2032,7 @@
                         flex-direction: row;
 
                         .title-line1 {
+                            display: none;
                             width: 0.333rem;
                             height: 0.067rem;
                             background-color: #FF7F00;
