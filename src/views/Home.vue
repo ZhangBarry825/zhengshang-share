@@ -448,19 +448,21 @@
             },
             postForm() {
                 let that = this
-                formPost({
-                    name: this.name,
-                    mobile: this.tel,
-                    remark: this.message,
-                }).then((res) => {
-                    if (res.code == 1) {
-                        that.$message.success('提交成功，我们会尽快与您联系！')
-                        setTimeout(() => {
-                            that.showDialog = false
-                        }, 2000)
-                    }
-                })
-
+                if(this.name && this.tel && this.message){
+                    formPost({
+                        name: this.name,
+                        mobile: this.tel,
+                        remark: this.message,
+                    }).then((res) => {
+                        if (res.code == 1) {
+                            that.$message.success('提交成功，我们会尽快与您联系！')
+                            setTimeout(() => {
+                                that.showDialog = false
+                            }, 2000)
+                        }
+                    })
+                }
+                this.openDialog()
             }
         },
         mounted() {

@@ -8,7 +8,7 @@
         </div>
         <div class="swipe-box">
             <el-carousel indicator-position="0.667rem">
-                <el-carousel-item >
+                <el-carousel-item>
                     <div class="banner-item banner-item1" :style="'background-image: url('+swipeList[0].img+')'">
                         <div class="banner-context">
                             <div class="line1">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </el-carousel-item>
-                <el-carousel-item >
+                <el-carousel-item>
                     <div class="banner-item banner-item2">
                         <div class="banner-context">
                             <div class="left">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </el-carousel-item>
-                <el-carousel-item >
+                <el-carousel-item>
                     <div class="banner-item banner-item3">
                         <div class="banner-context">
                             <div class="left">
@@ -139,7 +139,7 @@
                 </div>
                 <div class="context">
                     <el-image class="active-right-img" style="width: 5.333rem;height: 4.227rem;" fit="cover"
-                               :src="projectProcess[projectProcessIndex].img"/>
+                              :src="projectProcess[projectProcessIndex].img"/>
                     <div class="left">
                         <div class="line1">{{projectProcess[projectProcessIndex].title}}</div>
                         <div class="line2"></div>
@@ -248,7 +248,7 @@
                     <div class="top"></div>
                     <div class="bottom-box" id="scene0">
                         <div class="bottom" data-depth="0.05">
-                            <div class="right" >
+                            <div class="right">
                                 <div class="line line1">{{aboutUs.description1}}</div>
                                 <div class="line line2">{{aboutUs.description2}}</div>
                             </div>
@@ -393,8 +393,8 @@
             };
         },
         methods: {
-            changePic(index){
-                this.partners[index].img1=this.partners[index].img2
+            changePic(index) {
+                this.partners[index].img1 = this.partners[index].img2
             },
             newsDetail(index) {
                 this.$router.push({
@@ -426,19 +426,21 @@
             },
             postForm() {
                 let that = this
-                formPost({
-                    name: this.name,
-                    mobile: this.tel,
-                    remark: this.message,
-                }).then((res) => {
-                    if (res.code == 1) {
-                        that.$message.success('提交成功，我们会尽快与您联系！')
-                        setTimeout(() => {
-                            that.showDialog = false
-                        }, 2000)
-                    }
-                })
-
+                if (this.name && this.tel && this.message) {
+                    formPost({
+                        name: this.name,
+                        mobile: this.tel,
+                        remark: this.message,
+                    }).then((res) => {
+                        if (res.code == 1) {
+                            that.$message.success('提交成功，我们会尽快与您联系！')
+                            setTimeout(() => {
+                                that.showDialog = false
+                            }, 2000)
+                        }
+                    })
+                }
+                this.openDialog()
             }
         },
         mounted() {
@@ -447,9 +449,9 @@
 
             //自动咨询弹窗 30s
             this.autoAlertDialog()
-            setTimeout(()=>{
-              this.showDialog=true
-            },3000)
+            setTimeout(() => {
+                this.showDialog = true
+            }, 3000)
 
             this.$ami('.service-item0', 200, 'bottom', '30%', .8, true)
             this.$ami('.service-item1', 300, 'bottom', '30%', .8, true)
@@ -493,21 +495,23 @@
         width: 100%;
         height: 100%;
 
-        .header-logo{
+        .header-logo {
             width: 100%;
             display: flex;
             position: absolute;
             z-index: 8;
-            top:0;
+            top: 0;
             padding: 0.267rem 0.267rem;
             box-sizing: border-box;
-            .left{
-                img{
+
+            .left {
+                img {
                     width: 100px;
                     height: 30px;
                 }
             }
         }
+
         .swipe-box {
             width: 100%;
             height: 6.147rem;
@@ -543,7 +547,8 @@
                     font-size: 0.267rem;
                 }
             }
-            ::v-deep .is-active{
+
+            ::v-deep .is-active {
                 background-color: #FF8000;
             }
 
@@ -571,7 +576,8 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            img{
+
+                            img {
                                 width: 0.333rem;
                                 height: 0.333rem;
                             }
@@ -607,7 +613,7 @@
                     }
 
                     .line3 {
-                        margin-top:0.467rem;
+                        margin-top: 0.467rem;
                         cursor: pointer;
                         border: 1px solid rgba(255, 255, 255, .5);
                         opacity: .8;
@@ -625,6 +631,7 @@
 
                 }
             }
+
             .banner-item2 {
                 width: 100%;
                 height: 100%;
@@ -639,8 +646,10 @@
                     justify-content: space-between;
                     align-items: center;
                     padding-top: 0.8rem;
-                    .left{
+
+                    .left {
                         padding-left: 0.4rem;
+
                         .line1 {
                             .text {
                                 letter-spacing: 0.04rem;
@@ -654,7 +663,8 @@
                         .line2 {
                             margin-top: 0.187rem;
                             margin-bottom: 0.267rem;
-                            .text{
+
+                            .text {
                                 letter-spacing: 0.01rem;
                                 font-weight: 400;
                                 color: #FFFFFF;
@@ -677,13 +687,15 @@
                             border-radius: 0.4rem;
                         }
                     }
-                    .right{
+
+                    .right {
                         margin-right: 0.4rem;
                     }
 
 
                 }
             }
+
             .banner-item3 {
                 width: 100%;
                 height: 100%;
@@ -698,8 +710,10 @@
                     justify-content: space-between;
                     align-items: center;
                     padding-top: 0.8rem;
-                    .left{
+
+                    .left {
                         padding-left: 0.4rem;
+
                         .line1 {
                             .text {
                                 letter-spacing: 0.04rem;
@@ -713,7 +727,8 @@
                         .line2 {
                             margin-top: 0.187rem;
                             margin-bottom: 0.267rem;
-                            .text{
+
+                            .text {
                                 letter-spacing: 0.01rem;
                                 font-weight: 400;
                                 color: #FFFFFF;
@@ -736,7 +751,8 @@
                             border-radius: 0.4rem;
                         }
                     }
-                    .right{
+
+                    .right {
                         /*margin-right: 0.4rem;*/
                     }
 
@@ -788,9 +804,9 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.147rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -799,10 +815,10 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -843,9 +859,10 @@
                         box-sizing: border-box;
                         margin-bottom: 0.667rem;
 
-                        .case-item:nth-child(2n-1){
+                        .case-item:nth-child(2n-1) {
                             margin-right: 0.267rem;
                         }
+
                         .case-item {
                             margin-bottom: 0.267rem;
                             width: 4.46rem;
@@ -957,9 +974,9 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.133rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -969,11 +986,11 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         top: 2.333rem;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -990,9 +1007,10 @@
                     padding: 0 0.2rem;
                     box-sizing: border-box;
 
-                    .item:nth-child(2n-1){
+                    .item:nth-child(2n-1) {
                         margin-right: 0.267rem;
                     }
+
                     .item {
                         flex-shrink: 1;
                         cursor: pointer;
@@ -1009,6 +1027,7 @@
                         padding-top: 0.667rem;
                         box-sizing: border-box;
                         margin-bottom: 1.067rem;
+
                         .logo {
                             width: 1.333rem;
                             height: 1.333rem;
@@ -1016,8 +1035,8 @@
                             position: absolute;
                             top: -0.667rem;
 
-                            left:50%;
-                            transform: translate(-50%,0);
+                            left: 50%;
+                            transform: translate(-50%, 0);
 
                             img {
                                 width: 1.333rem;
@@ -1046,7 +1065,7 @@
 
                     .item:hover {
                         .logo {
-                            img{
+                            img {
                                 border-radius: 50%;
                                 animation: spin 3s linear infinite;
                             }
@@ -1105,11 +1124,11 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.333rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -1118,19 +1137,21 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
                         bottom: 0.133rem;
                     }
                 }
-                .items::-webkit-scrollbar{
+
+                .items::-webkit-scrollbar {
                     display: none;
                 }
+
                 .items {
                     width: 100%;
                     padding: 0.8rem 0.4rem;
@@ -1140,12 +1161,15 @@
                     position: relative;
                     overflow-x: scroll;
                     box-sizing: border-box;
-                    .item:first-child{
+
+                    .item:first-child {
                         padding-left: 0;
                     }
-                    .item:last-child{
+
+                    .item:last-child {
                         padding-right: 0;
                     }
+
                     .item {
                         padding: 0 0.267rem;
                         cursor: pointer;
@@ -1157,10 +1181,12 @@
                         .logo {
                             width: 1.533rem;
                             height: 1.533rem;
-                            img{
-                                width:50%;
+
+                            img {
+                                width: 50%;
                                 height: 50%;
                             }
+
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -1307,9 +1333,9 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.147rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -1319,10 +1345,10 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -1339,6 +1365,7 @@
                     position: relative;
                     padding: 0 0.267rem;
                     box-sizing: border-box;
+
                     .left {
                         display: flex;
                         width: 3.84rem;
@@ -1350,6 +1377,7 @@
                             .line1 {
                                 display: flex;
                                 align-items: center;
+
                                 .text {
                                     font-size: 0.35rem;
                                     font-weight: bold;
@@ -1382,6 +1410,7 @@
                         justify-content: center;
                         height: 5.3rem;
                         width: 2.5rem;
+
                         img {
                             width: 100%;
                             height: 100%;
@@ -1393,8 +1422,10 @@
                         display: flex;
                         width: 3.84rem;
                         flex-direction: column;
+
                         .item {
                             margin-bottom: .53rem;
+
                             .line1 {
                                 display: flex;
                                 align-items: center;
@@ -1475,11 +1506,11 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.333rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -1488,10 +1519,10 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
@@ -1548,7 +1579,8 @@
                             @include line-hidden(3)
                         }
                     }
-                    .item:hover{
+
+                    .item:hover {
                         border: 2px solid gainsboro;
                         box-shadow: 0 0 0.2rem #EEEEEE;
                     }
@@ -1604,11 +1636,11 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.333rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -1618,10 +1650,10 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -1639,11 +1671,11 @@
                     box-sizing: border-box;
 
 
-                    .item:nth-child(2n){
+                    .item:nth-child(2n) {
                         border-left: 1px solid rgba(0, 0, 0, .5);
                     }
 
-                    .item:nth-child(2n-1){
+                    .item:nth-child(2n-1) {
                         border-radius: 0.133rem 0rem 0rem 0.133rem;
                     }
 
@@ -1664,7 +1696,8 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            img{
+
+                            img {
                                 width: 1.333rem;
                                 height: 1.333rem;
                             }
@@ -1769,11 +1802,11 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.333rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -1782,10 +1815,10 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
@@ -1816,7 +1849,7 @@
                         }
 
                         .img1 {
-                            left:0;
+                            left: 0;
                             width: 4.147rem;
                             height: 5.947rem;
                         }
@@ -1857,6 +1890,7 @@
                         height: 8rem;
                         position: absolute;
                         top: 2.5rem;
+
                         .bottom {
                             width: 100%;
                             height: 100%;
@@ -1881,10 +1915,12 @@
                                     line-height: 0.48rem;
                                     @include line-hidden(8);
                                 }
-                                .line1{
+
+                                .line1 {
                                     padding-left: 4rem;
                                 }
-                                .line2{
+
+                                .line2 {
                                     margin-top: 0.267rem;
                                 }
                             }
@@ -1940,11 +1976,11 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.333rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -1954,10 +1990,10 @@
 
                     .title-line4 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #FFFEFE;
@@ -1971,7 +2007,7 @@
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
-                    padding:  0 0.267rem;
+                    padding: 0 0.267rem;
                     box-sizing: border-box;
                     overflow: hidden;
                     border-radius: 0.133rem;
@@ -1985,21 +2021,24 @@
                         justify-content: center;
                         align-items: center;
 
-                        ::v-deep .el-image{
+                        ::v-deep .el-image {
                             transition: all 1s;
                         }
                     }
-                    .item:hover{
-                        ::v-deep .el-image{
+
+                    .item:hover {
+                        ::v-deep .el-image {
                             transform: rotateY(360deg);
                         }
                     }
-                    .item:nth-child(1),.item:nth-child(2),.item:nth-child(3),.item:nth-child(4),.item:nth-child(5),{
-                        border-left: 1px solid rgba(0,0,0,0.1) !important;
+
+                    .item:nth-child(1), .item:nth-child(2), .item:nth-child(3), .item:nth-child(4), .item:nth-child(5), {
+                        border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
                     }
-                    .item:nth-child(n+6){
-                        border-left: 1px solid rgba(0,0,0,0.1) !important;
-                        border-top: 1px solid rgba(0,0,0,0.1) !important;
+
+                    .item:nth-child(n+6) {
+                        border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+                        border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
                     }
                 }
             }
@@ -2049,11 +2088,11 @@
 
                     .title-line3 {
                         position: absolute;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
                         white-space: nowrap;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         top: 1.333rem;
                         font-size: 0.96rem;
                         font-weight: bold;
@@ -2065,10 +2104,10 @@
                         box-sizing: border-box;
                         position: absolute;
                         top: 2.5rem;
-                        left:50%;
+                        left: 50%;
                         width: 100%;
                         text-align: center;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         font-size: 0.35rem;
                         font-weight: 400;
                         color: #222222;
@@ -2085,6 +2124,7 @@
                     padding: 0 0.4rem;
                     justify-content: space-between;
                     box-sizing: border-box;
+
                     .item {
                         cursor: pointer;
                         width: 4.4rem;
@@ -2097,7 +2137,8 @@
                             width: 100%;
                             height: 3.467rem;
                             overflow: hidden;
-                            ::v-deep .el-image{
+
+                            ::v-deep .el-image {
                                 transition: all 1s;
                             }
                         }
@@ -2123,7 +2164,6 @@
                 }
             }
         }
-
 
 
         .dialog-box {
@@ -2186,9 +2226,11 @@
                     .line3 {
                         display: flex;
                         align-items: center;
-                        img{
+
+                        img {
                             width: 30px;
                         }
+
                         .text {
                             font-size: 25px;
                             color: #FFFFFF;
@@ -2226,8 +2268,9 @@
                     ::v-deep .el-textarea {
                         margin-right: 10px;
                     }
-                    ::v-deep .el-textarea__inner{
-                        overflow-y:hidden
+
+                    ::v-deep .el-textarea__inner {
+                        overflow-y: hidden
                     }
 
                     .el-button--danger {
